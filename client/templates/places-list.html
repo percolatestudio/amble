@@ -1,0 +1,15 @@
+<template name="placesList">
+  <div>
+    <button class="js-load-places">Load Places</button>
+    {{#if Template.subscriptionsReady}}
+      <ul>
+        {{#each places}}
+          <li>{{name}}</li>
+        {{/each}}
+      </ul>
+    {{else}}
+      Loading...
+    {{/if}}
+  </div>
+</template>
+

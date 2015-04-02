@@ -1,0 +1,13 @@
+<head>
+  <title>amble</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{#if currentUser}}
+    {{> placesList}}
+  {{else}}
+    {{> loginButton}}
+  {{/if}}
+</body>
