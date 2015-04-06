@@ -1,17 +1,34 @@
 Meteor.publish('places/list', function() {
+  // TODO - places near the user's current location
   return Places.find({userId: this.userId});
 });
 
-Meteor.methods({
-  'places/load': function() {
+var Facebook = {
+  loadPlaces: function() {
     var url = 'https://graph.facebook.com/me?fields=likes.fields(id,name,location).limit(100)';
     var token = Meteor.user().services.facebook.accessToken;
     var results = HTTP.get(url, {params: {access_token: token}});
-    _.each(results.data.likes.data, function(like) {
-      Places.upsert(
-        _.pick(like, 'id'),
-        _.extend({userId: Meteor.userId()}, like)
-      );
+    var likes = results.data.likes.data;
+    
+    return _.filter(likes, function(l) { return l.location && l.location.latitude; });
+  }
+}
+
+Meteor.methods({
+  'places/load': function() {
+    var places = Facebook.loadPlaces();
+    _.each(places, function(place) {
+      var doc = {
+        name: place.name,
+        userId: Meteor.userId(),
+        coordinates: [
+          place.location.longitude,
+          place.location.latitude
+        ],
+        metadata: place
+      };
+      
+      Places.upsert(_.pick(doc, 'name', 'userId'), doc);
     });
   }
 });
