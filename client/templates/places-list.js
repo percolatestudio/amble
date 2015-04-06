@@ -1,5 +1,13 @@
 Template.placesList.created = function() {
-  this.subscribe('places/list');
+  var self = this;
+  
+  self.autorun(function() {
+    var latLng = Geolocation.latLng();
+
+    if (latLng) {
+      self.subscribe('places/list', latLng);
+    }
+  });
 };
 
 Template.placesList.helpers({

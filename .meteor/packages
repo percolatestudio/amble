@@ -10,3 +10,4 @@ accounts-facebook
 accounts-ui
 service-configuration
 http
+mdg:geolocation

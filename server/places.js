@@ -1,6 +1,13 @@
-Meteor.publish('places/list', function() {
-  // TODO - places near the user's current location
-  return Places.find({userId: this.userId});
+Meteor.publish('places/list', function(latLng) {
+  var geometry = {type: "Point", coordinates: [latLng.lng, latLng.lat]};
+  
+  return Places.find({
+    userId: this.userId,
+    coordinates: {$near: {
+      $geometry: geometry,
+      $maxDistance: 10000 // metres
+    }}
+  });
 });
 
 var Facebook = {
