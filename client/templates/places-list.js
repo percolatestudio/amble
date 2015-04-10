@@ -2,7 +2,7 @@ Template.placesList.created = function() {
   var self = this;
   
   self.autorun(function() {
-    var latLng = Geolocation.latLng();
+    var latLng = Meteor.user().lastLocation;
 
     if (latLng) {
       self.subscribe('places/list', latLng);
