@@ -1,6 +1,8 @@
 
-document.addEventListener("deviceready", function() {
-  AmbleWatch.init();
+Meteor.startup(function() {
+  document.addEventListener("deviceready", function() {
+    AmbleWatch.init();
+  });
 });
 
 AmbleWatch = {

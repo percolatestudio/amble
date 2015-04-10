@@ -1,0 +1,11 @@
+<template name="home">
+  <h1>Welcome to Amble!</h1>
+
+  {{#if currentUser}}
+    {{> placesList}}
+  {{else}}
+    {{> loginButton}}
+  {{/if}}
+
+  {{> watchButton}}
+</template>

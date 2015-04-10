@@ -6,3 +6,7 @@ Router.route('geolocation', {
     this.response.end('done')
   }
 });
+
+Router.map(function() {
+  this.route('home', {path: '/'});
+});

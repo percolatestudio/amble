@@ -9,10 +9,6 @@
     "key": "amble-apns-dev.pem",
     "cert": "aps_development.cer"
   },  
-  "gcm": {
-    "apiKey": "Your long Google API key",
-    "projectNumber": ""
-  },
   "production": false,
   "badge": true,
   "sound": true,

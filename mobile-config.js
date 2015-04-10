@@ -13,12 +13,14 @@ App.setPreference('DisallowOverscroll', true);
 App.setPreference('LoadUrlTimeoutValue', 60000);
 
 // Set up resources such as icons and launch screens.
-// App.icons({
-//   // iOS
-//   'iphone': '.cordova-build/resources/production/ios/icons/icon-60.png',
-//   'iphone_2x': '.cordova-build/resources/production/ios/icons/icon-60@2x.png',
-//   'ipad': '.cordova-build/resources/production/ios/icons/icon-76.png',
-//   'ipad_2x': '.cordova-build/resources/production/ios/icons/icon-76@2x.png',
+App.icons({
+  // iOS
+  'iphone': '.cordova-build/resources/production/ios/icons/icon-60.png',
+  'iphone_2x': '.cordova-build/resources/production/ios/icons/icon-60@2x.png',
+  'iphone_3x': '.cordova-build/resources/production/ios/icons/icon-60@3x.png',
+  'ipad': '.cordova-build/resources/production/ios/icons/icon-76.png',
+  'ipad_2x': '.cordova-build/resources/production/ios/icons/icon-76@2x.png'
+});
 
 //   // Android
 //   'android_ldpi': '.cordova-build/resources/production/android/icons/icon-36.png',
