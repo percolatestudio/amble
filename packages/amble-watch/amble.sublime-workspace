@@ -1,0 +1,1102 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"user",
+				"username"
+			],
+			[
+				"cordo",
+				"cordovaReady"
+			],
+			[
+				"bina",
+				"binaryVersion"
+			],
+			[
+				"inf",
+				"inferredVersion"
+			],
+			[
+				"wid",
+				"widgetUrl"
+			],
+			[
+				"sett",
+				"settings_handle"
+			],
+			[
+				"app",
+				"appStatusConnectionError"
+			],
+			[
+				"appStat",
+				"appStatusChecking"
+			],
+			[
+				"local",
+				"localStorage"
+			],
+			[
+				"ver",
+				"versionFile"
+			],
+			[
+				"he",
+				"healthy"
+			],
+			[
+				"health",
+				"healthChecks"
+			],
+			[
+				"h",
+				"healthChecks"
+			],
+			[
+				"hel",
+				"healthCheckMethod"
+			],
+			[
+				"healt",
+				"healthChecks"
+			],
+			[
+				"allo",
+				"allowedToHCP"
+			],
+			[
+				"conn",
+				"connectionStatusVisible"
+			],
+			[
+				"appS",
+				"appStatusVisible"
+			],
+			[
+				"is",
+				"isFirstLaunch"
+			],
+			[
+				"upda",
+				"updatingInForeground"
+			],
+			[
+				"pr",
+				"preventDefault"
+			],
+			[
+				"response",
+				"responsesLeft"
+			],
+			[
+				"res",
+				"responsesToUngroup"
+			],
+			[
+				"respon",
+				"responseCount"
+			],
+			[
+				"blacklist",
+				"blacklistedTeacherIds"
+			],
+			[
+				"patch",
+				"patch_cordova_ios"
+			],
+			[
+				"checking",
+				"checkingForUpdates"
+			],
+			[
+				"connection",
+				"connectionStatus"
+			],
+			[
+				"ret",
+				"retryCount"
+			],
+			[
+				"per",
+				"performUpdateInBackground"
+			],
+			[
+				"perfo",
+				"performUpdateInBackground"
+			],
+			[
+				"on",
+				"onAppReady"
+			],
+			[
+				"onUpd",
+				"onUpdateInBackground"
+			],
+			[
+				"onUpdate",
+				"onUpdateInForeground"
+			],
+			[
+				"class",
+				"classCode"
+			],
+			[
+				"Stud",
+				"StudentUsernameField"
+			],
+			[
+				"new",
+				"newVersionDownloading"
+			],
+			[
+				"version",
+				"versionCheckComplete"
+			],
+			[
+				"not",
+				"notFound"
+			],
+			[
+				"sub",
+				"subscribeWithPagination"
+			],
+			[
+				"zip",
+				"zipcode"
+			],
+			[
+				"process",
+				"processingStatus"
+			],
+			[
+				"proce",
+				"processingStatus"
+			],
+			[
+				"conte",
+				"contentType"
+			],
+			[
+				"does",
+				"doesNeedClick"
+			],
+			[
+				"fast",
+				"fastClickScrollParent"
+			],
+			[
+				"lat",
+				"latitude"
+			],
+			[
+				"twi",
+				"twitter_id"
+			],
+			[
+				"faceb",
+				"facebookId"
+			],
+			[
+				"twti",
+				"twitterId"
+			],
+			[
+				"face",
+				"facebookId"
+			],
+			[
+				"Mob",
+				"Mobileserver"
+			],
+			[
+				"fac",
+				"facebookId"
+			],
+			[
+				"facebo",
+				"facebook_id"
+			],
+			[
+				"tw",
+				"twitter_id"
+			],
+			[
+				"remot",
+				"remote_volume"
+			],
+			[
+				"updateRemote",
+				"updateRemoteStatus"
+			],
+			[
+				"Mobileserv",
+				"Mobileserver_model"
+			],
+			[
+				"Mobil",
+				"Mobileserver_model"
+			],
+			[
+				"rece",
+				"receiverName"
+			],
+			[
+				"getUser",
+				"getUserByName"
+			],
+			[
+				"sender",
+				"senderId"
+			],
+			[
+				"rec",
+				"receiverId"
+			],
+			[
+				"Channels",
+				"Channels_model"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/timhingston/Documents/dev/percolate/amble/amble.html",
+			"settings":
+			{
+				"buffer_size": 170,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/timhingston/Documents/dev/percolate/amble/places.js",
+			"settings":
+			{
+				"buffer_size": 118,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/timhingston/Documents/dev/percolate/amble/client/templates/places-list.js",
+			"settings":
+			{
+				"buffer_size": 433,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.js",
+			"settings":
+			{
+				"buffer_size": 823,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "amble-watch.js",
+			"settings":
+			{
+				"buffer_size": 306,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 347.0,
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Remove Package"
+			],
+			[
+				"package",
+				"Package Control: Enable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"Ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Pa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/stylesheets/globals/layout.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/users-methods.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/users.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/users/edit.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/users-security.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/main.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/production/build.conf",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/development/mobile-config.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/production/mobile-config.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/staging/mobile-config.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/mobile-config.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/application/menu.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/activity.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/admin/schools/assign-overlay.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/lib/router.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/fastclick/fastclick/lib/fastclick.js",
+		"/Users/timhingston/Documents/dev/percolate/meteor-fastclick/fastclick/lib/fastclick.js",
+		"/Users/timhingston/Documents/dev/percolate/fastclick/lib/fastclick.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.meteor/packages",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/lib/capabilities.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/admin/schools/edit.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/lib/helpers.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/auth/password-reset.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/flips/content-chooser.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/flips/content-chooser.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/scripts/README.md",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/safe/safe.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/users-schema.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/cordova-verso/verso-cordova.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/main.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/intercom/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/intercom/intercom_loader.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/cordova-verso/package.js",
+		"/Users/timhingston/Documents/dev/percolate/meteor-intercom/intercom_client.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/public/cordova/2.5.0/android/cordova.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/auth/teacher-upgrade.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/server/_settings.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/offline-notification/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/app-status/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/graphs-area.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/search.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/components/punch-card.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/application/body.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/admin/teachers/list.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/admin/schools/list.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/accounts-password-override/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/import/versions.json",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/counter-cache/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/stylesheets/globals/graphs/graphs-area.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/stylesheets/globals/forms/form.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/fastclick/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.meteor/local/isopacks/fastclick/os/packages/fastclick.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/scripts/build.sh",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/staging/build.conf",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/development/build.conf",
+		"/Users/timhingston/Documents/dev/percolate/meteor-intercom/intercom_loader.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.meteor/local/cordova-build/platforms/android/src/com/percolatestudio/cordova/safereload/PSSafeReload.java",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/safe-reload/safe-reload.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/safe-reload/package.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/flash-notifications/flash-notifications-ui.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/lib/overlay-router.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/_settings.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/safe-reload/README.md",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/bound-form/bound-form.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/lib/drive.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/manual-reload/client.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/responses/footer.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/connection-error.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/app-status/app-status.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/app-status.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/add-commit-hash.py",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/scripts/add-commit-hash.py",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/resources/staging/settings.json",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/scripts/build.conf",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/stylesheets/lib/header.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/cordova-verso/verso-av.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/flips/edit.js",
+		"/Users/timhingston/Documents/dev/percolate/notes/Certificates.p12",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.meteor/cordova-plugins",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/checking.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/connection-error.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/updating-error.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/app-status-layout.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/auth/login.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/emails/email.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/updating-error.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/updating.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/app-status.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/app-status/app-notifications.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/offline-notification/client.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/styleguide/overlay.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/main.less",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/app-status/app-status-overlay.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/update-status/updating.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/update-status/checking.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/update-status/update-status-layout.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/update-status/connection-error.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/update-status/updating-error.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/header-page.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/application/overlay.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/application/body.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/admin/dashboard/list.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/application/connection-status.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/header-page-importer.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/server/accounts.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/import/import.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/lib/auth.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/schools-import-teacher.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/auth/login.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/responses.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/responses/show.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/comments/item.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/comments/item.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/packages/collections/statistics.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/teachers-table-view.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/teachers-table-view.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/teachers-by-category.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/builds/source/packages/import/import.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/.cordova-build/builds/source/client/templates/schools/components/schools-import-teacher.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/response-groups/edit.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/components/tooltip.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/header-page-teacher.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/styleguide/module.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/header-page-importer.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/show.html",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/schools/components/header-page-teacher.js",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/stylesheets/globals/notification.lessimport",
+		"/Users/timhingston/Documents/dev/percolate/verso-web/client/templates/response-groups/edit-nav.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"-.meteor/*,-.cordova-build/*,-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"package.js",
+			"-.meteor/*,-.cordova-build/*,-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"-.meteor/*,-.-cordova-build/*,-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"-.meteor/*,-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"-.meteor/*,-cordova-build/*,-.build*/*,-*.map,-*.sublime-workspace",
+			"-.meteor/*,-cordova-build/*,-.build*/*,-*.map",
+			"-.meteor/*,-cordova-build/*",
+			"-.meteor/*,-cordova-build/*,-.build*",
+			"-.meteor/*,-cordova-build/*",
+			"-.meteor/*,-cordova-build/*,-packages/*",
+			"-.meteor/*,-cordova-build/*,packages/*",
+			"-.meteor/*,-cordova-build/*,.build*/*",
+			"-.meteor/*,-cordova-build/*",
+			"-.meteor/*",
+			"",
+			"-.meteor/*,-.build.cordova-old/*,-.build.collections/*",
+			"-.meteor/*",
+			"-.meteor/*,-.build.cordova-old/*",
+			"-.meteor/*,-.build.cordova-old/*,-.build.collections/*",
+			"-.meteor/*, -.build.cordova-old/*, -.build.collections/*",
+			"-.meteor/*, -.build.cordova-old/*",
+			"-.meteor/*, -.build*",
+			"-.meteor/*, -.build.cordova-old/*",
+			"-.meteor/*",
+			"-.meteor",
+			"",
+			"/Users/timhingston/Documents/dev/projects/TVDJ/github/server/admin.tvdj.co/application/",
+			"/Users/timhingston/Documents/dev/projects/TVDJ/github/server/admin.tvdj.co/application/models",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"scroll",
+			"overthrow",
+			"overflow-y",
+			"webkit-overflow-scrolling",
+			"hammerjs",
+			"hammer.js",
+			"hammer",
+			"user-scalable",
+			"touch-action",
+			"schoolDat",
+			"clearCookies",
+			"Meteor.call('Meteor.users.mutate.update",
+			"Meteor.users.update",
+			"users.mutate.update",
+			"adminSchoolsUnknownItem",
+			"updateUser",
+			"unset",
+			"platform",
+			"window.device.platform",
+			"Oops",
+			"errors",
+			"Safe.validate(_.clone",
+			"coordin",
+			"Safe.validate",
+			"onError",
+			"labelAndError",
+			"change #",
+			"click #",
+			"click [data",
+			"data-",
+			"js-X",
+			"data-",
+			"#each",
+			"$",
+			"userDoc",
+			"campusPath",
+			"autocomplete",
+			"label",
+			"touchStart",
+			"label",
+			"cordova.",
+			"cordova",
+			"cordovaReady",
+			"appVersion",
+			"cordova-binary-version",
+			"intercomSettings",
+			"logout",
+			"source",
+			"onLoad",
+			"production",
+			"initTeacher",
+			"stringify",
+			"isOnlyGoogleUser",
+			"minimumUserInfo",
+			"intercom",
+			"Cordova.inferredVersion",
+			"cordova-binary-version",
+			"legacy",
+			"cordova-binary-version",
+			"intercom",
+			"userInfo",
+			"userInfo()",
+			"IntercomSettings.userInfo",
+			"deps",
+			"Deps.autorun",
+			"tracker",
+			"clauseDep",
+			"Deps.autorun",
+			"Tracker",
+			"Deps.autorun",
+			"deps.autorun",
+			"deps",
+			"@2",
+			"@0",
+			"@1",
+			"accounts-password",
+			"@1",
+			"accounts-password",
+			"api.use(",
+			"api.versions",
+			"pointer-events",
+			":not",
+			"pointer-events",
+			"label >",
+			"label",
+			"input",
+			"version: '2.0.1'",
+			"standard-app-packages",
+			"logout",
+			"window.localStorage",
+			"Migrations.",
+			".",
+			"getFilesDir",
+			"startup",
+			"XCODE_BUILD_PROFILE",
+			"XCODE_BUILD",
+			"progress",
+			"uploading",
+			"c1df1992edfd40d05ae82841efcef9d19a7810f5",
+			"ieHackStopTransition",
+			"> updating",
+			"appStatusPageTitle",
+			"font-s2",
+			"{{!",
+			"hr/>",
+			"    <",
+			"UI.contentBlock",
+			"checkingForUpdates",
+			"updatingInBackground",
+			"updatingInForeground",
+			"buttonTemplate",
+			"UI.dynamic",
+			"template=",
+			"icon-",
+			"icon-download",
+			"cog",
+			"pageLayout",
+			"{{else if",
+			"{{elsif",
+			"{{elif",
+			"updating",
+			"Meteor.user",
+			"Meteor.users.mutate.insert",
+			"Cannot create new users",
+			"sendEnrollmentAs",
+			"sendEnrollment",
+			"csvImportTeacher",
+			"Accounts."
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			".cordova-build/resources/",
+			"yes",
+			"AppStatus.updateStatus.get",
+			"AppStatus.updateStatus.set",
+			",",
+			"",
+			"%",
+			",",
+			"self._fileTransfer",
+			"self.isRecording",
+			"VersoAV.isRecording",
+			"self.isRecording",
+			"Log.debug",
+			"Log.info",
+			"Utils.debugTrace",
+			"Utils.trace",
+			"this.isRecording",
+			"r.",
+			"log_message('info'",
+			"",
+			"remote",
+			"Remote",
+			"user_name",
+			"Viewers_model",
+			"Views_model",
+			"viewer",
+			"djmgmt",
+			"id",
+			"channels",
+			"subscriptions",
+			"users",
+			"password) > 64"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/timhingston/Documents/dev/percolate/amble/amble.html",
+					"settings":
+					{
+						"buffer_size": 170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/timhingston/Documents/dev/percolate/amble/places.js",
+					"settings":
+					{
+						"buffer_size": 118,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/timhingston/Documents/dev/percolate/amble/client/templates/places-list.js",
+					"settings":
+					{
+						"buffer_size": 433,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "package.js",
+					"settings":
+					{
+						"buffer_size": 823,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "amble-watch.js",
+					"settings":
+					{
+						"buffer_size": 306,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								306,
+								306
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 252.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"body.js",
+				"verso-web/client/templates/application/body.js"
+			],
+			[
+				"router",
+				"verso-web/lib/router.js"
+			],
+			[
+				"users-se",
+				"verso-web/packages/collections/users-security.js"
+			],
+			[
+				"edit",
+				"verso-web/client/templates/users/edit.js"
+			],
+			[
+				"users",
+				"verso-web/packages/collections/users.js"
+			],
+			[
+				"users-mtho",
+				"verso-web/packages/collections/users-methods.js"
+			],
+			[
+				"users-m",
+				"verso-web/packages/collections/users-methods.js"
+			],
+			[
+				"",
+				"verso-web/client/lib/capabilities.js"
+			],
+			[
+				"cap",
+				"verso-web/client/lib/capabilities.js"
+			],
+			[
+				"users-schema",
+				"verso-web/packages/collections/users-schema.js"
+			],
+			[
+				"safe.js",
+				"verso-web/packages/safe/safe.js"
+			],
+			[
+				"capabil",
+				"verso-web/client/lib/capabilities.js"
+			],
+			[
+				"setting",
+				"verso-web/server/_settings.js"
+			],
+			[
+				"footer",
+				"verso-web/client/templates/responses/footer.js"
+			],
+			[
+				"main.less",
+				"verso-web/client/main.less"
+			],
+			[
+				"not-ou",
+				"verso-web/client/templates/application/not-found.html"
+			],
+			[
+				"response-groups",
+				"verso-web/packages/collections/response-groups.js"
+			],
+			[
+				"facet-t",
+				"verso-web/client/templates/schools/components/facet-toggles.js"
+			],
+			[
+				"schools",
+				"verso-web/packages/collections/schools.js"
+			],
+			[
+				"utils",
+				"verso-web/packages/publications/schools/utils.js"
+			],
+			[
+				"by-schoo",
+				"verso-web/packages/publications/schools/by-school.js"
+			],
+			[
+				"header-page-te",
+				"client/templates/schools/components/header-page-teacher.js"
+			],
+			[
+				"header-page-teacher",
+				"client/templates/schools/components/header-page-teacher.html"
+			],
+			[
+				"graph-are",
+				"client/templates/schools/components/graphs-area.html"
+			],
+			[
+				"fixtr",
+				"packages/collections/fixtures.js"
+			],
+			[
+				"graph-area",
+				"client/templates/schools/components/graphs-area.js"
+			],
+			[
+				"manu",
+				".meteor/local/build/programs/server/packages/manual-reload.js"
+			],
+			[
+				"manua",
+				"packages/manual-reload/.build.manual-reload/os/packages/manual-reload.js"
+			],
+			[
+				"pub",
+				"packages/publications/publications.js"
+			],
+			[
+				"edit.js",
+				"client/templates/flips/edit.js"
+			],
+			[
+				"safe",
+				"packages/safe/safe.js"
+			],
+			[
+				"counter",
+				"packages/counter-cache/counter-cache.js"
+			],
+			[
+				"admin",
+				"lib/routes/admin-controller.js"
+			],
+			[
+				"counterc",
+				"packages/counter-cache/counter-cache.js"
+			],
+			[
+				"flip-stream",
+				"client/templates/schools/flip-stream-show.html"
+			],
+			[
+				"migra",
+				"packages/collections/migrations.js"
+			],
+			[
+				"flips/item",
+				"client/templates/flips/item.js"
+			],
+			[
+				"contentitem",
+				"client/templates/contents/item.html"
+			],
+			[
+				"flips/item.",
+				"client/templates/flips/item.html"
+			],
+			[
+				"edi",
+				"client/templates/flips/edit.js"
+			],
+			[
+				"fast",
+				"packages/fastclick/fastclick.js"
+			],
+			[
+				"sele",
+				"client/templates/_components/select.html"
+			],
+			[
+				"selec",
+				"client/templates/_components/select.js"
+			],
+			[
+				"cordova-old",
+				"packages/cordova-old/cordova-old.js"
+			],
+			[
+				"main.js",
+				"client/main.js"
+			],
+			[
+				"_set",
+				"client/_settings.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 417.0,
+	"status_bar_visible": true
+}

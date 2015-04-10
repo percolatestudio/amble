@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Amble Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="AmbleInterfaceController" customModule="Amble_WatchKit_Extension">
+                    <items>
+                        <button width="1" height="29.5" alignment="left" title="Button" id="QsK-IY-lta">
+                            <connections>
+                                <segue destination="il7-t4-L2Z" kind="push" identifier="seguePoiDetail" id="5J1-Pt-q3C"/>
+                            </connections>
+                        </button>
+                        <map height="115" alignment="left" id="hWp-Bg-q4C"/>
+                    </items>
+                    <connections>
+                        <outlet property="map" destination="hWp-Bg-q4C" id="Jij-7X-hL5"/>
+                        <outlet property="poiButton" destination="QsK-IY-lta" id="xgF-of-fAb"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="205" y="326"/>
+        </scene>
+        <!--Poi Detail View Controller-->
+        <scene sceneID="kn5-vT-Iuu">
+            <objects>
+                <controller id="il7-t4-L2Z" customClass="PoiDetailViewController" customModule="Amble_WatchKit_Extension">
+                    <items>
+                        <label height="148.5" alignment="center" text="Name Address Line 1 Address Line 2 CIty, State Zip Country" numberOfLines="5" id="CI3-Kf-w8V"/>
+                    </items>
+                    <connections>
+                        <outlet property="addressLabel" destination="CI3-Kf-w8V" id="uN9-6C-a8V"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="415" y="326"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label width="136" height="55.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="ebV-kG-iUK"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="ebV-kG-iUK" id="wMd-bi-WBM"/>
+                        <segue destination="KaH-rr-bkP" kind="relationship" relationship="dynamicNotificationInterface" id="vuj-Md-2HA"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Amble Notification Controller-->
+        <scene sceneID="0p6-iJ-Q41">
+            <objects>
+                <controller id="KaH-rr-bkP" customClass="AmbleNotificationController" customModule="Amble_WatchKit_Extension">
+                    <items>
+                        <label width="136" height="38.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="IdU-wH-bcW"/>
+                        <label width="136" height="17" alignment="left" text="Tim H Likes This" numberOfLines="2" id="7Ah-iC-dwh">
+                            <color key="textColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                        </label>
+                    </items>
+                    <connections>
+                        <outlet property="footerLabel" destination="7Ah-iC-dwh" id="eb1-0a-xk6"/>
+                        <outlet property="headerLabel" destination="IdU-wH-bcW" id="gSQ-sK-jQB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="423" y="643"/>
+        </scene>
+    </scenes>
+</document>
