@@ -2,12 +2,12 @@
   "apn": {
     "passphrase": "",  
     "key": "amble-apns-prod.pem",
-    "cert": "aps_production.cer"
+    "cert": "aps_production.pem"
   },
   "apn-dev": {
     "passphrase": "",
     "key": "amble-apns-dev.pem",
-    "cert": "aps_development.cer"
+    "cert": "aps_development.pem"
   },  
   "production": false,
   "badge": true,
