@@ -9,7 +9,7 @@
     "key": "amble-apns-dev.pem",
     "cert": "aps_development.pem"
   },  
-  "production": false,
+  "production": true,
   "badge": true,
   "sound": true,
   "alert": true,

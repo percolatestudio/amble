@@ -45,7 +45,7 @@ var checkUserNotification = function(userId) {
     userId: user._id,
     coordinates: {$near: {
       $geometry: geometry,
-      $maxDistance: 500
+      $maxDistance: 10000
     }}
   });
   

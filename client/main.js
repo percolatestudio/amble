@@ -10,6 +10,13 @@
 
 Meteor.startup(function() {
 
+  Push.addListener('message', function(notification) {
+    // Called on every message
+    console.log(JSON.stringify(notification))
+
+    alert(notification.message);
+  });
+
   document.addEventListener("deviceready", function() {
     console.log("MAIN IS STARTING");
 
