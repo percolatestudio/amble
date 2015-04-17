@@ -57,16 +57,30 @@ class AmbleInterfaceController: WKInterfaceController {
     }
     
     func refreshMap() {
-        let currentMapPoint = MKMapPointForCoordinate(self.currentLocation!)
-        var currentMapRect = MKMapRectMake(currentMapPoint.x, currentMapPoint.y, 0, 0)
-        if (self.currentPoiData?.poiLocation != nil) {
-            let poiMapPoint = MKMapPointForCoordinate(self.currentPoiData!.poiLocation!)
-            let poiMapRect = MKMapRectMake(poiMapPoint.x, poiMapPoint.y, 0, 0)
-            currentMapRect = MKMapRectUnion(currentMapRect, poiMapRect)
+        var hasCurrentLocation = self.currentLocation != nil;
+        var hasPoiLocation = self.currentPoiData != nil && self.currentPoiData!.poiLocation != nil;
+        var currentMapRect :MKMapRect = MKMapRectNull
+        if (hasCurrentLocation) {
+            let currentMapPoint = MKMapPointForCoordinate(self.currentLocation!)
+            currentMapRect = MKMapRectMake(currentMapPoint.x, currentMapPoint.y, 5.0, 5.0)
         }
-        map.setVisibleMapRect(currentMapRect)
-        map.addAnnotation(self.currentLocation!, withPinColor: WKInterfaceMapPinColor.Purple)
-        if (self.currentPoiData?.poiLocation != nil) {
+        if (hasPoiLocation) {
+            let poiMapPoint = MKMapPointForCoordinate(self.currentPoiData!.poiLocation!)
+            let poiMapRect = MKMapRectMake(poiMapPoint.x, poiMapPoint.y, 5.0, 5.0)
+            if (hasCurrentLocation) {
+                currentMapRect = MKMapRectUnion(currentMapRect, poiMapRect)
+            }
+            else {
+                currentMapRect = poiMapRect
+            }
+        }
+        if (hasCurrentLocation || hasPoiLocation) {
+            map.setVisibleMapRect(currentMapRect)
+        }
+        if (hasCurrentLocation) {
+            map.addAnnotation(self.currentLocation!, withPinColor: WKInterfaceMapPinColor.Purple)
+        }
+        if (hasPoiLocation) {
             map.addAnnotation(self.currentPoiData!.poiLocation!, withPinColor: WKInterfaceMapPinColor.Green)
         }
     }
