@@ -31,6 +31,45 @@ Iron.Router.hooks.checkUserToken = function() {
   this.next();
 }
 
+var checkUserNotification = function(userId) {
+  var user = Meteor.users.findOne(userId);
+  
+  // make sure we have the latest places
+  Facebook.loadPlacesForUser(user);
+  
+  var latLng = user.profile.lastLocation;
+  var geometry = {type: "Point", coordinates: [latLng.lng, latLng.lat]};
+  
+  // find the closest point within 500m of the user's currentLocation
+  var place = Places.findOne({
+    userId: user._id,
+    coordinates: {$near: {
+      $geometry: geometry,
+      $maxDistance: 500
+    }}
+  });
+  
+  // if there's no POI within 500m or we already know about it, we're done
+  if (! place || place._id === user.lastNotifiedPlaceId) {
+    return;
+  }
+  
+  Meteor.users.update(user._id, {$set: {lastNotifiedPlaceId: place._id}});
+  console.log("Notifying", user._id, 'about', place);
+  Push.send({
+       from: 'push',
+       title: "Check out the place!",
+       text: EJSON.stringify(place),
+       query: {
+           // Ex. send to a specific user if using accounts:
+           userId: user._id
+       } // Query the appCollection
+       // token: appId or token eg. "{ apn: token }"
+       // tokens: array of appId's or tokens
+       // payload: user data
+   });
+}
+
 
 Router.route('geolocation', {
   path: '/api/geolocation',
@@ -43,9 +82,10 @@ Router.route('geolocation', {
       lat: data.location.latitude,
       lng: data.location.longitude
     };
+    console.log(latLng);
     Meteor.users.updateLocation(this.request.user._id, latLng);
     
-    // Send push notification if required.
+    checkUserNotification(this.request.user._id);
     
     this.response.statusCode = 200;
     this.response.end();

@@ -10,7 +10,7 @@ accounts-facebook
 accounts-ui
 service-configuration
 http
-mdg:geolocation
+#mdg:geolocation
 amble-watch
 amble-notifications
 raix:push

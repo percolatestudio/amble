@@ -1,4 +1,4 @@
-var Facebook = {
+Facebook = {
   loadPlacesForUser: function(user) {
     console.log('Loading places for ', user.services.facebook.email);
     var url = 'https://graph.facebook.com/me?fields=likes.fields(id,name,location).limit(100)';

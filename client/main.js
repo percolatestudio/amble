@@ -1,14 +1,22 @@
-Tracker.autorun(function() {
-  var latLng = Geolocation.latLng();
-  if (latLng && Meteor.userId()) {
-    Meteor.users.updateLocation(Meteor.userId(), latLng);
-    // tell watch
-  }
-});
+
+// Tracker.autorun(function() {
+//   console.log("Getting location");
+//   var latLng = Geolocation.latLng();
+//   if (latLng && Meteor.userId()) {
+//     Meteor.users.updateLocation(Meteor.userId(), latLng);
+//     // tell watch
+//   }
+// });
 
 Meteor.startup(function() {
 
   document.addEventListener("deviceready", function() {
+    console.log("MAIN IS STARTING");
+
+    window.navigator.geolocation.getCurrentPosition(function(location) {
+        console.log('Location from Phonegap');
+    });
+    
     var bgGeo = window.plugins.backgroundGeoLocation;
 
     var success = function(location) {
@@ -18,7 +26,9 @@ Meteor.startup(function() {
         userToken: Accounts._storedLoginToken()
       };
     
-      HTTP.post(Router.url('geolocation'), {data: data}, function() {
+      console.log("Making server method call to update location");
+      HTTP.post(Router.url('geolocation'), {data: data}, function(error) {
+        console.log("Completed server call", error);
         // 2. tell watch
       
         // 3. Tell bgGeo to close the bg thread
@@ -33,6 +43,7 @@ Meteor.startup(function() {
 
     bgGeo.configure(success, fail, options);
 
+    console.log("START BG GEO");
     bgGeo.start();
   });
 });
