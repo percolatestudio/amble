@@ -15,8 +15,8 @@ AmbleWatch = {
     });
   },
 
-  updateLocation: function(lat, long) {
-    var locData = lat + ',' + long;
+  updateLocation: function(latLng) {
+    var locData = latLng.lat + ',' + latLng.lng;
     applewatch.sendMessage(locData, 'location', 
       function() { 
         console.log("updated watch location to ", locData);

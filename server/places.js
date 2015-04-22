@@ -1,6 +1,6 @@
 Facebook = {
   loadPlacesForUser: function(user) {
-    console.log('Loading places for ', user.services.facebook.email);
+    //console.log('Loading places for ', user.profile.name);
     var url = 'https://graph.facebook.com/me?fields=likes.fields(id,name,location).limit(100)';
     var token = user.services.facebook.accessToken;
     var results = HTTP.get(url, {params: {access_token: token}});
@@ -13,10 +13,13 @@ Facebook = {
       var doc = {
         name: place.name,
         userId: user._id,
-        coordinates: [
-          place.location.longitude,
-          place.location.latitude
-        ],
+        location: {
+          type: "Point",
+          coordinates: [
+            place.location.longitude,
+            place.location.latitude
+          ]
+        },
         metadata: place
       };
       
@@ -27,7 +30,6 @@ Facebook = {
 
 Meteor.publish('places/list', function(latLng) {
   var self = this;
-  var geometry = {type: "Point", coordinates: [latLng.lng, latLng.lat]};
   
   var user = Meteor.users.findOne(self.userId);
   var interval = Meteor.setInterval(function() {
@@ -38,17 +40,17 @@ Meteor.publish('places/list', function(latLng) {
     Meteor.clearInterval(interval);
   });
   
-  return Places.find({
-    userId: self.userId,
-    coordinates: {$near: {
-      $geometry: geometry,
-      $maxDistance: 10000 // metres
-    }}
-  });
+  return Places.findNearby(self.userId, latLng);
 });
 
 Meteor.methods({
   'places/load': function() {
     Facebook.loadPlacesForUser(Meteor.user());
+  },
+  'places/sendNearestToMe': function() {
+    var nearest = Places.findNearest(Meteor.userId(), Meteor.user().profile.lastLocation);
+    if (nearest) {
+      AmbleNotifications.sendPlace(Meteor.userId(), nearest);
+    }
   }
 });

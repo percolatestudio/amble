@@ -1,12 +1,13 @@
 <template name="placesList">
   <div>
-    <button class="js-load-places">Load Places</button>
-    {{#if Template.subscriptionsReady}}
+    {{#if hasPlaces}}
+      <h3>Things you like nearby...</h3>
       <ul>
         {{#each places}}
           <li>{{name}}</li>
         {{/each}}
       </ul>
+      <button class="js-push-me">Push Me</button>
     {{else}}
       Loading...
     {{/if}}

@@ -11,6 +11,7 @@ App.info({
 App.setPreference('HideKeyboardFormAccessoryBar', true);
 App.setPreference('DisallowOverscroll', true);
 App.setPreference('LoadUrlTimeoutValue', 60000);
+App.accessRule("*");
 
 // Set up resources such as icons and launch screens.
 App.icons({

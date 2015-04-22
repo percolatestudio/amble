@@ -1,9 +1,8 @@
 Template.placesList.created = function() {
   var self = this;
-  
+  Meteor.call('places/load');  
   self.autorun(function() {
-    var latLng = Meteor.user().lastLocation;
-
+    var latLng = Meteor.user().profile.lastLocation;
     if (latLng) {
       self.subscribe('places/list', latLng);
     }
@@ -12,12 +11,16 @@ Template.placesList.created = function() {
 
 Template.placesList.helpers({
   places: function() {
-    return Places.find({userId: Meteor.userId()});
+    return Places.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
+  },
+
+  hasPlaces: function() {
+    return Places.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
   }
 });
 
 Template.placesList.events({
-  'click .js-load-places': function() {
-    Meteor.call('places/load');
+  'click .js-push-me': function() {
+     Meteor.call('places/sendNearestToMe');
   }
 });

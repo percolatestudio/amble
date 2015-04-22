@@ -12,7 +12,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1');
-  api.addFiles('amble-notifications.js');
+  api.use('raix:push');
+  api.addFiles('amble-notifications.js', 'server');
+  api.export('AmbleNotifications', 'server');
 });
 
 Package.onTest(function(api) {
