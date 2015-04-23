@@ -20,46 +20,58 @@ var watchForLocationChangesInBG = function() {
   var success = function(location) {
     // 1. rest API call (which ends up updating user)
     var data = {
-      location: location,
-      userToken: Accounts._storedLoginToken()
+      userToken: Accounts._storedLoginToken(),
+      location: {
+        lat: location.latitude,
+        lng: location.longitude
+      }
     };
   
-    console.log("updating location from background: ", location);
+    console.log("updating location from background: ", data.location);
     HTTP.post(Router.url('geolocation'), {data: data}, function(error) {
       // 2. tell watch
-      AmbleWatch.updateLocation(latLng);
+      AmbleWatch.updateLocation(data.location);
       // 3. Tell bgGeo to close the bg thread
       bgGeo.finish();
     });
   };
 
   var fail = function() {
-    console.log('bgGeo failure', arguments)
+    console.log('bgGeo failure', arguments);
   };
   var options = {};
 
   bgGeo.configure(success, fail, options);
   
-
   document.addEventListener("pause", function() {
-    Log.info('cordova:pause');
+    console.log('cordova:pause');
     bgGeo.start();
   }, false);
 
   document.addEventListener("resume", function() {
-    Log.info('cordova:resume');
+    console.log('cordova:resume');
     bgGeo.stop();
   }, false);
 
 };
 
+var displayNotification = function(notification) {
+  console.log(JSON.stringify(notification));
+  var title = notification.payload.poi.name + " is only steps away!";
+  var message =  notification.payload.poi.address;
+  navigator.notification.alert(message, null, title, "OK");
+};
+
 Meteor.startup(function() {
+
+  Push.addListener('startup', function(notification) {
+    // Called when we start the app with a pending notification
+    displayNotification(notification);
+  });
 
   Push.addListener('message', function(notification) {
     // Called on every message
-    console.log(JSON.stringify(notification))
-
-    navigator.notification.alert(notification.payload.poi.address, null, notification.message, "OK");
+    displayNotification(notification);
   });
 
   document.addEventListener("deviceready", function() {
@@ -69,4 +81,3 @@ Meteor.startup(function() {
     watchForLocationChangesInBG();
   });
 });
-

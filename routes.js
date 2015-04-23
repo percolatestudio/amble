@@ -55,13 +55,15 @@ Router.route('geolocation', {
   onBeforeAction: ['allowCors', 'checkUserToken'],
   action: function() {
     var data = this.request.body;
+    check(data, {
+      location: {
+        lat: Number,
+        lng: Number
+      }
+    });
     
-    var latLng = {
-      lat: data.location.latitude,
-      lng: data.location.longitude
-    };
-    console.log("updating location from background: ", latLng);
-    Meteor.users.updateLocation(this.request.user._id, latLng);
+    console.log("updating location from background: ", data.location);
+    Meteor.users.updateLocation(this.request.user._id, data.location);
     
     checkUserNotification(this.request.user._id);
     
