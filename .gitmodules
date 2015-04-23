@@ -1,0 +1,3 @@
+[submodule "packages/accounts-anonymous"]
+	path = packages/accounts-anonymous
+	url = https://github.com/tmeasday/meteor-accounts-anonymous

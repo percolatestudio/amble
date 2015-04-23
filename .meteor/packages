@@ -6,8 +6,7 @@
 
 meteor-platform
 insecure
-accounts-facebook
-accounts-ui
+accounts-anonymous
 service-configuration
 http
 mdg:geolocation
