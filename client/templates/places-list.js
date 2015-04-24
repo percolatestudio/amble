@@ -1,6 +1,5 @@
 Template.placesList.created = function() {
   var self = this;
-  Meteor.call('places/load');  
   self.autorun(function() {
     var latLng = Meteor.user().profile.lastLocation;
     if (latLng) {
@@ -19,6 +18,7 @@ Template.placesList.helpers({
   },
 
   address: function() {
+    return "";
     var location = this.metadata.location;
     var street = location.street ? location.street + ", ": "";
     var city = location.city ? location.city : "";
