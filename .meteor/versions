@@ -41,6 +41,8 @@ minifiers@1.1.5
 minimongo@1.0.8
 mobile-status-bar@1.0.3
 mongo@1.1.0
+oauth@1.1.4
+oauth1@1.1.4
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 raix:eventemitter@0.1.2
