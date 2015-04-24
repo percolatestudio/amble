@@ -6,7 +6,9 @@ var watchForLocationChangesInFG = function() {
     if (latLng && Meteor.userId()) {
       console.log("updating location from foreground: ", latLng);
       Meteor.users.updateLocation(Meteor.userId(), latLng);
-      AmbleWatch.updateLocation(latLng);
+      if (Meteor.isCordova) {
+        AmbleWatch.updateLocation(latLng);
+      }
     }
     if (error) {
       console.log(error);
@@ -74,10 +76,14 @@ Meteor.startup(function() {
     displayNotification(notification);
   });
 
-  document.addEventListener("deviceready", function() {
-    console.log("cordova:ready");
+  if (Meteor.isCordova) {
+    document.addEventListener("deviceready", function() {
+      console.log("cordova:ready");
 
+      watchForLocationChangesInFG();
+      watchForLocationChangesInBG();
+    });
+  } else {
     watchForLocationChangesInFG();
-    watchForLocationChangesInBG();
-  });
+  }
 });
