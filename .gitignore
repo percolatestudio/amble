@@ -6,3 +6,4 @@ packages/*/versions.json
 .cordova-build/builds
 .cordova-build/scripts/build.conf
 .cordova-build/scripts/xcuserdata
+settings.json
