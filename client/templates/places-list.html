@@ -1,13 +1,20 @@
 <template name="placesList">
   <div>
     {{#if hasPlaces}}
-      <h3>Things you like nearby...</h3>
-      <ul>
-        {{#each places}}
-          <li>{{name}}</li>
-        {{/each}}
-      </ul>
-      <button class="js-push-me">Push Me</button>
+      {{#each places}}
+        <a class="item-activity">
+         <span class="attribution">
+          <span class="meta">
+            <span class="author">{{name}}</span> is offering <span class="recipe">A Sweet Deal!</span>
+            <span class="location">&mdash;{{address}}</span>
+           </span>
+        </span>
+        <!-- <div class="bg-image" style="background-image: url('{{image}}');"></div>-->
+        </a>
+      {{/each}}
+      <div>
+        <a href="#" class="btn-primary js-push-me">Push Me</a>
+      </div>
     {{else}}
       Loading...
     {{/if}}

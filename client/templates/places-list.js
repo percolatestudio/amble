@@ -16,6 +16,13 @@ Template.placesList.helpers({
 
   hasPlaces: function() {
     return Places.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
+  },
+
+  address: function() {
+    var location = this.metadata.location;
+    var street = location.street ? location.street + ", ": "";
+    var city = location.city ? location.city : "";
+    return street + city;
   }
 });
 
