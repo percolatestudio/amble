@@ -1,9 +1,14 @@
+var loadPlacesForUser = function(user) {
+  Yelp.loadPlacesForUser(user);
+  Foursquare.loadPlacesForUser(user);
+}
+
 Meteor.publish('places/list', function(latLng) {
   var self = this;
   
   var user = Meteor.users.findOne(self.userId);
   var interval = Meteor.setInterval(function() {
-    // Yelp.loadPlacesForUser(user);
+    // loadPlacesForUser(user);
   }, 10000);
   
   self.onStop(function() {
@@ -15,7 +20,7 @@ Meteor.publish('places/list', function(latLng) {
 
 Meteor.methods({
   'places/load': function() {
-    Yelp.loadPlacesForUser(Meteor.user());
+    loadPlacesForUser(Meteor.user());
   },
   'places/sendNearestToMe': function() {
     var nearest = Places.findNearest(Meteor.userId(), Meteor.user().profile.lastLocation);
