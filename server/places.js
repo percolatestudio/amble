@@ -1,6 +1,7 @@
 var loadPlacesForUser = function(user) {
   Yelp.loadPlacesForUser(user);
   Foursquare.loadPlacesForUser(user);
+  Facebook.loadPlacesForUser(user);
 }
 
 Meteor.publish('places/list', function(latLng) {
