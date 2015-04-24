@@ -3,7 +3,7 @@ Meteor.publish('places/list', function(latLng) {
   
   var user = Meteor.users.findOne(self.userId);
   var interval = Meteor.setInterval(function() {
-    Groupon.loadPlacesForUser(user);
+    // Yelp.loadPlacesForUser(user);
   }, 10000);
   
   self.onStop(function() {
@@ -15,7 +15,7 @@ Meteor.publish('places/list', function(latLng) {
 
 Meteor.methods({
   'places/load': function() {
-    Groupon.loadPlacesForUser(Meteor.user());
+    Yelp.loadPlacesForUser(Meteor.user());
   },
   'places/sendNearestToMe': function() {
     var nearest = Places.findNearest(Meteor.userId(), Meteor.user().profile.lastLocation);

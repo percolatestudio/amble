@@ -9,7 +9,7 @@ Groupon = {
       // lat: user.profile.lastLocation.lat,
       // lng: user.profile.lastLocation.lng,
       lat: 37.7833,
-      lng: 122.4167, 
+      lng: -122.4167, 
       // LOL, in miles, good one groupon
       // radius: Math.round(100 / 1.6),
       // radius: 100,
