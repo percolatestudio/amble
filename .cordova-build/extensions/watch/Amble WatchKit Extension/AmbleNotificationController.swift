@@ -46,7 +46,7 @@ class AmbleNotificationController: WKUserNotificationInterfaceController {
     override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
         
         var ambleData = AmbleNotificationData(fromNotification: remoteNotification);
-        let headerText = ambleData.poiName! + " is only steps away..."
+        let headerText = (ambleData.poiName! as String) + " is only steps away..."
         var styledHeaderText = NSMutableAttributedString(string: headerText);
         styledHeaderText.addAttribute(NSFontAttributeName, value: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), range: NSRange(location:0, length: ambleData.poiName!.length));
         self.headerLabel .setAttributedText(styledHeaderText);
@@ -56,7 +56,7 @@ class AmbleNotificationController: WKUserNotificationInterfaceController {
         if (ambleData.userLastName!.length > 0) {
             poiUserLast = " " + ambleData.userLastName!.substringToIndex(1);
         }
-        let footerText = poiUserFirst + poiUserLast + " likes this";
+        let footerText = (poiUserFirst as String) + poiUserLast + " likes this";
         self.footerLabel .setText(footerText)
         
         completionHandler(.Custom)

@@ -26,12 +26,12 @@ class AmbleNotificationData: NSObject {
                 self.poiAddress = poiAddress;
             }
             if let poiLocation = poi["loc"] as? Dictionary<NSString, AnyObject> {
-                let poiLatitude = poiLocation["lat"] as NSString;
-                let poiLongitude = poiLocation["long"] as NSString;
+                let poiLatitude = poiLocation["lat"] as! NSString;
+                let poiLongitude = poiLocation["long"] as! NSString;
 
                 let numberFormatter = NSNumberFormatter()
                 numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-                self.poiLocation = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(poiLatitude) as CLLocationDegrees, longitude: numberFormatter.numberFromString(poiLongitude) as CLLocationDegrees);
+                self.poiLocation = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(poiLatitude as String) as! CLLocationDegrees, longitude: numberFormatter.numberFromString(poiLongitude as String) as! CLLocationDegrees);
             }
             if let poiUser = poi["user"] as? Dictionary<NSString, AnyObject> {
                 self.userFirstName = poiUser["first"] as? NSString;

@@ -28,12 +28,12 @@ class AmbleInterfaceController: WKInterfaceController {
         var locData :AnyObject? = self.wormhole?.messageWithIdentifier(locChannel)
 
         if (locData != nil) {
-            let locMessage :String = locData as String
+            let locMessage :String = locData as! String
             self.currentLocation = self.parseLocationMessage(locMessage)
             self.refreshMap()
         }
         self.wormhole?.listenForMessageWithIdentifier(locChannel, listener: { (message:AnyObject!) -> Void in
-            let locMessage :String = message as String;
+            let locMessage :String = message as! String;
             self.currentLocation = self.parseLocationMessage(locMessage)
             self.refreshMap()
         });
@@ -41,7 +41,9 @@ class AmbleInterfaceController: WKInterfaceController {
     
     override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject]) {
         var ambleData = AmbleNotificationData(fromNotification: remoteNotification)
-        self.poiButton.setTitle(ambleData.poiName)
+        if let poiName = ambleData.poiName as? String {
+            self.poiButton.setTitle(poiName)
+        }
         self.currentPoiData = ambleData
         if ((ambleData.poiLocation) != nil) {
             self.refreshMap()
@@ -49,10 +51,10 @@ class AmbleInterfaceController: WKInterfaceController {
     }
     
     func parseLocationMessage(locationMessage: String) -> CLLocationCoordinate2D {
-        let latLong = split(locationMessage, {$0 == ","})
+        let latLong = split(locationMessage) {$0 == ","}
         let numberFormatter = NSNumberFormatter()
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        let currentCoords = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(latLong[0]) as CLLocationDegrees, longitude: numberFormatter.numberFromString(latLong[1]) as CLLocationDegrees)
+        let currentCoords = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(latLong[0]) as! CLLocationDegrees, longitude: numberFormatter.numberFromString(latLong[1]) as! CLLocationDegrees)
         return currentCoords;
     }
     

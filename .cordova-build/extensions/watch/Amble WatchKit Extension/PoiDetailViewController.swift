@@ -20,7 +20,7 @@ class PoiDetailViewController: WKInterfaceController {
         let ambleData = context as? AmbleNotificationData;
         if (ambleData != nil) {
             let addressText :NSString = ambleData!.poiName!.stringByAppendingFormat("@\n%@", ambleData!.poiAddress!);
-            self.addressLabel.setText(addressText);
+            self.addressLabel.setText(addressText as String);
         }
     }
 
