@@ -10,7 +10,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="AmbleInterfaceController" customModule="Amble_WatchKit_Extension">
                     <items>
-                        <button width="1" height="29.5" alignment="left" title="Button" id="QsK-IY-lta">
+                        <button width="1" height="29.5" alignment="left" title="Where am I?" id="QsK-IY-lta">
                             <connections>
                                 <segue destination="il7-t4-L2Z" kind="push" identifier="seguePoiDetail" id="5J1-Pt-q3C"/>
                             </connections>
@@ -60,8 +60,8 @@
             <objects>
                 <controller id="KaH-rr-bkP" customClass="AmbleNotificationController" customModule="Amble_WatchKit_Extension">
                     <items>
-                        <label width="136" height="38.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="IdU-wH-bcW"/>
-                        <label width="136" height="17" alignment="left" text="Tim H Likes This" numberOfLines="2" id="7Ah-iC-dwh">
+                        <label width="136" height="40.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="IdU-wH-bcW"/>
+                        <label width="136" height="39" alignment="left" text="85 High St Northcote VIC" numberOfLines="2" id="7Ah-iC-dwh">
                             <color key="textColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
                         </label>
@@ -72,7 +72,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="423" y="643"/>
+            <point key="canvasLocation" x="423" y="645"/>
         </scene>
     </scenes>
 </document>

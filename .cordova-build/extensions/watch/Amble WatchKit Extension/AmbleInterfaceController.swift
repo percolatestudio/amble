@@ -25,12 +25,9 @@ class AmbleInterfaceController: WKInterfaceController {
         
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.percolatestudio.amble", optionalDirectory: nil)
         let locChannel :String = "location"
-        var locData :AnyObject? = self.wormhole?.messageWithIdentifier(locChannel)
-
-        if (locData != nil) {
+        if let locData :AnyObject = self.wormhole?.messageWithIdentifier(locChannel) {
             let locMessage :String = locData as String
             self.currentLocation = self.parseLocationMessage(locMessage)
-            self.refreshMap()
         }
         self.wormhole?.listenForMessageWithIdentifier(locChannel, listener: { (message:AnyObject!) -> Void in
             let locMessage :String = message as String;
@@ -53,30 +50,38 @@ class AmbleInterfaceController: WKInterfaceController {
         let numberFormatter = NSNumberFormatter()
         numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
         let currentCoords = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(latLong[0]) as CLLocationDegrees, longitude: numberFormatter.numberFromString(latLong[1]) as CLLocationDegrees)
-        return currentCoords;
+        return currentCoords
+    }
+    
+    func distance(from: CLLocationCoordinate2D, to:CLLocationCoordinate2D) -> CLLocationDistance {
+        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        return from.distanceFromLocation(to)
     }
     
     func refreshMap() {
-        var hasCurrentLocation = self.currentLocation != nil;
-        var hasPoiLocation = self.currentPoiData != nil && self.currentPoiData!.poiLocation != nil;
-        var currentMapRect :MKMapRect = MKMapRectNull
-        if (hasCurrentLocation) {
-            let currentMapPoint = MKMapPointForCoordinate(self.currentLocation!)
-            currentMapRect = MKMapRectMake(currentMapPoint.x, currentMapPoint.y, 5.0, 5.0)
+        var hasCurrentLocation = false
+        var hasPoiLocation = false
+        var mapRegionHeight :Double = 2500 // metres
+        // initialize to invalid location
+        var centerCoords : CLLocationCoordinate2D = CLLocationCoordinate2DMake(-37.8, 145)
+        if let currentLocation = self.currentLocation? {
+            hasCurrentLocation = true
+            centerCoords = currentLocation
         }
-        if (hasPoiLocation) {
-            let poiMapPoint = MKMapPointForCoordinate(self.currentPoiData!.poiLocation!)
-            let poiMapRect = MKMapRectMake(poiMapPoint.x, poiMapPoint.y, 5.0, 5.0)
-            if (hasCurrentLocation) {
-                currentMapRect = MKMapRectUnion(currentMapRect, poiMapRect)
+        if let poiLocation = self.currentPoiData?.poiLocation? {
+            hasPoiLocation = true
+            if !hasCurrentLocation {
+                centerCoords = poiLocation
             }
             else {
-                currentMapRect = poiMapRect
+                mapRegionHeight = self.distance(currentLocation!, to: poiLocation) * 2.0
             }
         }
-        if (hasCurrentLocation || hasPoiLocation) {
-            map.setVisibleMapRect(currentMapRect)
-        }
+        let mapViewAspect = 1.0
+        var mapRegionWidth = mapRegionHeight * mapViewAspect
+        self.map.setRegion(MKCoordinateRegionMakeWithDistance(centerCoords, mapRegionWidth, mapRegionHeight))
+        
         if (hasCurrentLocation) {
             map.addAnnotation(self.currentLocation!, withPinColor: WKInterfaceMapPinColor.Purple)
         }
@@ -88,6 +93,7 @@ class AmbleInterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        self.refreshMap()
     }
 
     override func didDeactivate() {

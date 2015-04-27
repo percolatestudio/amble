@@ -17,10 +17,12 @@ class PoiDetailViewController: WKInterfaceController {
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let ambleData = context as? AmbleNotificationData;
-        if (ambleData != nil) {
-            let addressText :NSString = ambleData!.poiName!.stringByAppendingFormat("@\n%@", ambleData!.poiAddress!);
-            self.addressLabel.setText(addressText);
+        if let ambleData = context as? AmbleNotificationData {
+            if let poiAddress = ambleData.poiAddress {
+                if let addressText :NSString = ambleData.poiName?.stringByAppendingFormat("@\n%@", poiAddress) {
+                    self.addressLabel.setText(addressText);
+                }
+            }
         }
     }
 
