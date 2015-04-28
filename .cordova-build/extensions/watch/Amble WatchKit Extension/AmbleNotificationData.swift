@@ -11,10 +11,20 @@ import CoreLocation
 
 class AmbleNotificationData: NSObject {
    
-    var poiName :NSString?;
-    var poiLocation :CLLocationCoordinate2D?;
-    var poiAddress :NSString?;
+    var poiName :String?
+    var poiLocation :CLLocationCoordinate2D?
+    var poiAddress :String?
 
+    class func toCoordinates(fromLat latitude:String, andLong longitude:String) -> CLLocationCoordinate2D? {
+        let numberFormatter = NSNumberFormatter()
+        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        if let lat = numberFormatter.numberFromString(latitude)?.doubleValue,
+            let lng = numberFormatter.numberFromString(longitude)?.doubleValue {
+                return CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        }
+        return nil;
+    }
+    
     init(fromNotification remoteNotification: [NSObject : AnyObject]) {
         super.init()
         if let ejson = remoteNotification["ejson"] as? NSString {
@@ -38,19 +48,18 @@ class AmbleNotificationData: NSObject {
     
     func parsePoi(fromDictionary payload: NSDictionary) {
         if let poi = payload["poi"] as? NSDictionary {
-            if let poiName = poi["name"] as? NSString {
+            if let poiName = poi["name"] as? String {
                 self.poiName = poiName;
             }
-            if let poiAddress = poi["address"] as? NSString {
+            if let poiAddress = poi["address"] as? String {
                 self.poiAddress = poiAddress;
             }
             if let poiLocation = poi["loc"] as? NSDictionary {
-                let poiLatitude = poiLocation["lat"] as NSString;
-                let poiLongitude = poiLocation["long"] as NSString;
-                
-                let numberFormatter = NSNumberFormatter()
-                numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-                self.poiLocation = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(poiLatitude) as CLLocationDegrees, longitude: numberFormatter.numberFromString(poiLongitude) as CLLocationDegrees);
+                if let lat = poiLocation["lat"] as? String,
+                    let lng = poiLocation["long"] as? String
+                {
+                    self.poiLocation = AmbleNotificationData.toCoordinates(fromLat: lat, andLong: lng)
+                }
             }
         }
     }

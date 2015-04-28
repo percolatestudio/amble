@@ -49,7 +49,7 @@ class AmbleNotificationController: WKUserNotificationInterfaceController {
         if let poiName = ambleData.poiName {
             let headerText = poiName + " is only steps away..."
             var styledHeaderText = NSMutableAttributedString(string: headerText);
-            styledHeaderText.addAttribute(NSFontAttributeName, value: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), range: NSRange(location:0, length: poiName.length));
+            styledHeaderText.addAttribute(NSFontAttributeName, value: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), range: NSRange(location:0, length: poiName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)));
             self.headerLabel.setAttributedText(styledHeaderText);
         }
         if let poiAddress = ambleData.poiAddress {

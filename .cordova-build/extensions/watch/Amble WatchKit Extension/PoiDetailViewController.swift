@@ -18,10 +18,8 @@ class PoiDetailViewController: WKInterfaceController {
         super.awakeWithContext(context)
         
         if let ambleData = context as? AmbleNotificationData {
-            if let poiAddress = ambleData.poiAddress {
-                if let addressText :NSString = ambleData.poiName?.stringByAppendingFormat("@\n%@", poiAddress) {
-                    self.addressLabel.setText(addressText);
-                }
+            if let poiName = ambleData.poiName, let poiAddress = ambleData.poiAddress {
+                self.addressLabel.setText(poiName + "\n" + poiAddress)
             }
         }
     }

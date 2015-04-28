@@ -12,7 +12,7 @@ import Foundation
 class AmbleInterfaceController: WKInterfaceController {
 
     @IBOutlet weak var map: WKInterfaceMap!
-    @IBOutlet weak var poiButton: WKInterfaceButton!
+    @IBOutlet weak var poiLabel: WKInterfaceLabel!
     
     var currentPoiData :AmbleNotificationData?;
     var currentLocation :CLLocationCoordinate2D?;
@@ -25,32 +25,31 @@ class AmbleInterfaceController: WKInterfaceController {
         
         self.wormhole = MMWormhole(applicationGroupIdentifier: "group.com.percolatestudio.amble", optionalDirectory: nil)
         let locChannel :String = "location"
-        if let locData :AnyObject = self.wormhole?.messageWithIdentifier(locChannel) {
-            let locMessage :String = locData as String
+        if let locMessage = self.wormhole?.messageWithIdentifier(locChannel) as? String {
             self.currentLocation = self.parseLocationMessage(locMessage)
         }
         self.wormhole?.listenForMessageWithIdentifier(locChannel, listener: { (message:AnyObject!) -> Void in
-            let locMessage :String = message as String;
-            self.currentLocation = self.parseLocationMessage(locMessage)
-            self.refreshMap()
+            if let locMessage = message as? String {
+                self.currentLocation = self.parseLocationMessage(locMessage)
+                self.refreshMap()
+            }
         });
     }
     
     override func handleActionWithIdentifier(identifier: String?, forRemoteNotification remoteNotification: [NSObject : AnyObject]) {
         var ambleData = AmbleNotificationData(fromNotification: remoteNotification)
-        self.poiButton.setTitle(ambleData.poiName)
-        self.currentPoiData = ambleData
-        if ((ambleData.poiLocation) != nil) {
+        if let poiName = ambleData.poiName {
+            self.poiLabel.setText(poiName)
+        }
+        if let poiLocation = ambleData.poiLocation {
+            self.currentPoiData = ambleData
             self.refreshMap()
         }
     }
     
-    func parseLocationMessage(locationMessage: String) -> CLLocationCoordinate2D {
-        let latLong = split(locationMessage, {$0 == ","})
-        let numberFormatter = NSNumberFormatter()
-        numberFormatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        let currentCoords = CLLocationCoordinate2D(latitude: numberFormatter.numberFromString(latLong[0]) as CLLocationDegrees, longitude: numberFormatter.numberFromString(latLong[1]) as CLLocationDegrees)
-        return currentCoords
+    func parseLocationMessage(locationMessage: String) -> CLLocationCoordinate2D? {
+        let latLong = split(locationMessage) {$0 == ","}
+        return AmbleNotificationData.toCoordinates(fromLat: latLong[0], andLong: latLong[1])
     }
     
     func distance(from: CLLocationCoordinate2D, to:CLLocationCoordinate2D) -> CLLocationDistance {
@@ -62,25 +61,29 @@ class AmbleInterfaceController: WKInterfaceController {
     func refreshMap() {
         var hasCurrentLocation = false
         var hasPoiLocation = false
-        var mapRegionHeight :Double = 2500 // metres
+        var mapRegionSize :Double = 2500 // metres
         // initialize to invalid location
         var centerCoords : CLLocationCoordinate2D = CLLocationCoordinate2DMake(-37.8, 145)
-        if let currentLocation = self.currentLocation? {
+        if let currentLocation = self.currentLocation {
             hasCurrentLocation = true
             centerCoords = currentLocation
         }
-        if let poiLocation = self.currentPoiData?.poiLocation? {
+        if let poiLocation = self.currentPoiData?.poiLocation {
             hasPoiLocation = true
             if !hasCurrentLocation {
                 centerCoords = poiLocation
             }
             else {
-                mapRegionHeight = self.distance(currentLocation!, to: poiLocation) * 2.0
+                let poiDistance = self.distance(currentLocation!, to: poiLocation) * 2.0
+                if poiDistance < mapRegionSize {
+                    mapRegionSize = poiDistance
+                }
+                else {
+                    centerCoords = poiLocation
+                }
             }
         }
-        let mapViewAspect = 1.0
-        var mapRegionWidth = mapRegionHeight * mapViewAspect
-        self.map.setRegion(MKCoordinateRegionMakeWithDistance(centerCoords, mapRegionWidth, mapRegionHeight))
+        self.map.setRegion(MKCoordinateRegionMakeWithDistance(centerCoords, mapRegionSize, mapRegionSize))
         
         if (hasCurrentLocation) {
             map.addAnnotation(self.currentLocation!, withPinColor: WKInterfaceMapPinColor.Purple)
