@@ -3,11 +3,13 @@ var watchForLocationChangesInFG = function() {
   Tracker.autorun(function() {
     var latLng = Geolocation.latLng();
     var error = Geolocation.error();
-    if (latLng && Meteor.userId()) {
-      console.log("updating location from foreground: ", latLng);
-      Meteor.users.updateLocation(Meteor.userId(), latLng);
+    if (latLng) {
       if (Meteor.isCordova) {
         AmbleWatch.updateLocation(latLng);
+      }
+      if (Meteor.userId()) {
+        console.log("updating location from foreground: ", latLng);
+        Meteor.users.updateLocation(Meteor.userId(), latLng);
       }
     }
     if (error) {

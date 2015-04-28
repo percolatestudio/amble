@@ -1,4 +1,6 @@
 Places.loadPlacesForUser = function(user) {
+  console.log('Loading places for ', user.profile.name);
+
   Foursquare.loadPlacesForUser(user);
   Facebook.loadPlacesForUser(user);
   Yelp.loadPlacesForUser(user);
@@ -18,9 +20,6 @@ Meteor.publish('places/list', function(latLng) {
 
 Meteor.methods({
   'places/sendNearestToMe': function() {
-    var nearest = Places.findNearest(Meteor.userId(), Meteor.user().profile.lastLocation);
-    if (nearest) {
-      AmbleNotifications.sendPlace(Meteor.userId(), nearest);
-    }
+    Meteor.users.sendNearestPlace(Meteor.userId(), true);
   }
 });

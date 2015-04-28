@@ -1,10 +1,16 @@
 var URL = 'https://api.foursquare.com/v2/venues/explore';
 var VERSION = '20150424';
+var didWarn = false;
 
 Foursquare = {
   loadPlacesForUser: function(user) {
-    console.log('Loading places for ', user.profile.name);
-
+    if (!Meteor.settings.foursquare) {
+      if (!didWarn) {
+        didWarn = true;
+        Log.warn("FYI: Foursquare is not configured.  Make sure to run the app with --settings");
+      }
+      return;
+    }
     var latLng = user.profile.lastLocation;
     var params = {
       client_id: Meteor.settings.foursquare.clientId,

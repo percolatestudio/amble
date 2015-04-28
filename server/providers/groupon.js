@@ -1,9 +1,15 @@
 var URL = 'https://partner-api.groupon.com/deals.json';
+var didWarn = false;
 
 Groupon = {
   loadPlacesForUser: function(user) {
-    console.log('Loading places for ', user.profile.name);
-
+    if (!Meteor.settings.groupon) {
+      if (!didWarn) {
+        didWarn = true;
+        Log.warn("FYI: Groupon is not configured.  Make sure to run the app with --settings");
+      }
+      return;
+    }
     var params = {
       tsToken: 'US_AFF_0_' + Meteor.settings.groupon.affiliateId + '_212556_0',
       // lat: user.profile.lastLocation.lat,

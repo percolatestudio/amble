@@ -1,14 +1,24 @@
 
-var settings = Meteor.settings.yelp;
-var binding = new OAuth1Binding(_.pick(settings, 'consumerKey', 'secret'));
-binding.accessToken = settings.accessToken;
-binding.accessTokenSecret = settings.accessTokenSecret;
-
+var yelpOAuth = null;
+if (Meteor.settings.yelp) {
+  var settings = Meteor.settings.yelp;
+  yelpOAuth = new OAuth1Binding(_.pick(settings, 'consumerKey', 'secret'));
+  yelpOAuth.accessToken = settings.accessToken;
+  yelpOAuth.accessTokenSecret = settings.accessTokenSecret;
+}
 var URL = 'http://api.yelp.com/v2/search';
+var didWarn = false;
 
 Yelp = {
   loadPlacesForUser: function(user) {
     try {
+      if (!yelpOAuth) {
+        if (!didWarn) {
+          didWarn = true;
+          Log.warn("FYI: Yelp! is not configured.  Make sure to run the app with --settings");
+        }
+        return;
+      }
       var latLng = user.profile.lastLocation;
       console.log('Loading places at ', latLng);
       var params = {
@@ -18,7 +28,7 @@ Yelp = {
         limit: 10
       };
     
-      var results = binding.get(URL, params);
+      var results = yelpOAuth.get(URL, params);
       var businesses = results.data.businesses
       
       _.each(businesses, function(business) {
