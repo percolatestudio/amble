@@ -22,13 +22,15 @@ AmbleNotifications = {
     
     console.log("Notifying", userId, EJSON.stringify(EJSON.stringify(payload)));
     
-    var title = "Something cool is nearby...";
+    var title = "DEAL NEAR YOU";
     var message = place.name + " is only steps away!";
     var notification = {
        from: 'Amble',
-       text: { title: title, body: message},
+       title: title, 
+       text: message,
        payload: payload,
-       sound: "default"
+       sound: "default",
+       category: "default"
     };
 
     Push.appCollection.find({userId: userId}).forEach(function(app) {

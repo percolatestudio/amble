@@ -27,7 +27,8 @@ Template.placesList.helpers({
 });
 
 Template.placesList.events({
-  'click .js-push-me': function() {
-     Meteor.call('places/sendNearestToMe');
+  'click .js-push-me': function(e) {
+    e.preventDefault();
+    Meteor.call('places/sendNearestToMe');
   }
 });
