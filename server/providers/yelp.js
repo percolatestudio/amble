@@ -18,7 +18,7 @@ var URL = 'http://api.yelp.com/v2/search';
 var didWarn = false;
 
 Yelp = {
-  loadPlaces: function(latLng) {
+  loadDeals: function(latLng) {
     try {
       if (!yelpOAuth) {
         if (!didWarn) {
@@ -33,10 +33,10 @@ Yelp = {
         deals_filter: true,
         limit: 10
       };
-    
+
       var results = yelpOAuth.get(URL, params);
       var businesses = results.data.businesses
-      
+
       return _.map(businesses, function(business) {
         return {
           name: business.name,

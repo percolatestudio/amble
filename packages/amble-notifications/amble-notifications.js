@@ -1,16 +1,16 @@
 
 AmbleNotifications = {
-  sendPlace: function(userId, place) {    
+  sendDeal: function(userId, deal) {
     var payload = {
       poi: {
-        name: place.name,
+        name: deal.name,
         loc: {
-          long: place.location.coordinates[0].toString(),
-          lat: place.location.coordinates[1].toString(),
+          long: deal.location.coordinates[0].toString(),
+          lat: deal.location.coordinates[1].toString(),
         }
       }
     };
-    var location = place.metadata && place.metadata.location;
+    var location = deal.metadata && deal.metadata.location;
     if (location) {
       var street = location.street ? location.street + "\n" : "";
       var city = location.city ? location.city + ", " : "";
@@ -19,14 +19,14 @@ AmbleNotifications = {
       var address = street + city + state + country;
       payload.poi.address = address;
     }
-    
+
     console.log("Notifying", userId, EJSON.stringify(EJSON.stringify(payload)));
-    
+
     var title = "DEAL NEAR YOU";
-    var message = place.name + " is only steps away!";
+    var message = deal.name + " is only steps away!";
     var notification = {
        from: 'Amble',
-       title: title, 
+       title: title,
        text: message,
        payload: payload,
        sound: "default",

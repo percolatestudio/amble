@@ -30,7 +30,7 @@ var LOCAL_CATEGORIES = _.map([
 ], function(c) { return 'category:' + c; });
 
 Groupon = {
-  loadPlaces: function(lastLocation) {
+  loadDeals: function(lastLocation) {
     if (!Meteor.settings.groupon) {
       if (!didWarn) {
         didWarn = true;
