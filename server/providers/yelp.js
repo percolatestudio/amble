@@ -1,3 +1,11 @@
+// deals.0.options.currency_code/original_price/price
+// deals.0.what_you_get
+// deals.0.url
+
+// image_url - image -- pretty low quality
+
+// location.address/display_address
+// name
 
 var yelpOAuth = null;
 if (Meteor.settings.yelp) {
@@ -10,7 +18,7 @@ var URL = 'http://api.yelp.com/v2/search';
 var didWarn = false;
 
 Yelp = {
-  loadPlacesForUser: function(user) {
+  loadPlaces: function(latLng) {
     try {
       if (!yelpOAuth) {
         if (!didWarn) {
@@ -19,8 +27,6 @@ Yelp = {
         }
         return;
       }
-      var latLng = user.profile.lastLocation;
-      console.log('Loading places at ', latLng);
       var params = {
         ll: latLng.lat + ',' + latLng.lng,
         radius_filter: 10000,
@@ -31,10 +37,9 @@ Yelp = {
       var results = yelpOAuth.get(URL, params);
       var businesses = results.data.businesses
       
-      _.each(businesses, function(business) {
-        var doc = {
+      return _.map(businesses, function(business) {
+        return {
           name: business.name,
-          userId: user._id,
           location: {
             type: "Point",
             coordinates: [
@@ -44,8 +49,6 @@ Yelp = {
           },
           metadata: business
         };
-
-        Places.upsert(_.pick(doc, 'name', 'userId'), doc);
       });
     }
     catch (e) {

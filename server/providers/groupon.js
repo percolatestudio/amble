@@ -1,5 +1,27 @@
+// announcementTitle
+//   "Up to 56%  Off at Siam Orchid Traditional Thai Massage "
+// dealUrl
+// endAt
+// largeImageUrl
+// highlightsHtml
+//   "<p>Experienced massage therapists use traditional deep, yoga-like stretching and rhythmic pressure or aromatherapy techniques to banish tension</p>"
+// merchant.name
+// shortAnnouncementTitle
+//   "Traditional Thai Massage"
+// title
+//   "Thai Massage or Package with Optional Aromatherapy at Siam Orchid Traditional Thai Massage (Up to 56% Off)  "
+// options.0.title
+// options.0.discountPercent
+// options.0.value.amount
+// options.0.price.amount
+// options.0.discount.amount
+// options.0.redemptionLocations.name
+// options.0.redemptionLocations.streetAddress1/2
+// options.0.redemptionLocations.lat/lng
+
 var US_URL = 'https://partner-api.groupon.com/deals.json';
 var INT_URL = 'https://partner-int-api.groupon.com/deals.json';
+
 var didWarn = false;
 
 var LOCAL_CATEGORIES = _.map([
@@ -8,7 +30,7 @@ var LOCAL_CATEGORIES = _.map([
 ], function(c) { return 'category:' + c; });
 
 Groupon = {
-  loadPlacesForUser: function(user) {
+  loadPlaces: function(lastLocation) {
     if (!Meteor.settings.groupon) {
       if (!didWarn) {
         didWarn = true;
@@ -17,7 +39,6 @@ Groupon = {
       return;
     }
 
-    var lastLocation = user.profile.lastLocation;
     var params = {
       lat: lastLocation.lat,
       lng: lastLocation.lng,
@@ -28,7 +49,7 @@ Groupon = {
 
     var url;
     // If we don't know, we assume the US
-    if (lastLocation.country !== 'US') {
+    if (lastLocation.country && lastLocation.country !== 'US') {
       url = INT_URL;
       params.country_code = lastLocation.country;
       params.tsToken = lastLocation.country + '_AFF_0_' +
@@ -40,32 +61,23 @@ Groupon = {
     }
 
     console.log(params);
-    var results = HTTP.get(url, {params: params});
-    console.log(results);
 
-        //
-    //
-    // var likes = results.data.likes.data;
-    // var places = _.filter(likes, function(l) {
-    //   return l.location && l.location.latitude;
-    // });
-    //
-    // _.each(places, function(place) {
-    //   var doc = {
-    //     name: place.name,
-    //     userId: user._id,
-    //     location: {
-    //       type: "Point",
-    //       coordinates: [
-    //         place.location.longitude,
-    //         place.location.latitude
-    //       ]
-    //     },
-    //     metadata: place
-    //   };
-    //
-    //   Places.upsert(_.pick(doc, 'name', 'userId'), doc);
-    // });
+    var results = HTTP.get(url, {params: params});
+    var deals = results.data.deals;
+
+    return _.map(deals, function(deal) {
+      return {
+        name: deal.name,
+        // location: {
+        //   type: "Point",
+        //   coordinates: [
+        //     place.location.longitude,
+        //     place.location.latitude
+        //   ]
+        // },
+        metadata: deal
+      };
+    });
   }
 }
 
