@@ -1,3 +1,16 @@
+var CHECK_COUNTRY_EVERY_MINS = 60;
+
+var getCountry = function(latLng) {
+  Geocode.getCountry(latLng, function(err, country) {
+    if (err) {
+      console.log("Failed to find country", err);
+    } else {
+      Meteor.users.updateCountry(Meteor.userId(), country);
+    }
+  });
+};
+
+var getCountryDebounced = _.debounce(getCountry, 1000 * 60 * CHECK_COUNTRY_EVERY_MINS, true);
 
 var watchForLocationChangesInFG = function() {
   Tracker.autorun(function() {
@@ -10,6 +23,8 @@ var watchForLocationChangesInFG = function() {
       if (Meteor.userId()) {
         console.log("updating location from foreground: ", latLng);
         Meteor.users.updateLocation(Meteor.userId(), latLng);
+
+        getCountryDebounced(latLng);
       }
     }
     if (error) {
@@ -30,7 +45,7 @@ var watchForLocationChangesInBG = function() {
         lng: location.longitude
       }
     };
-  
+
     console.log("updating location from background: ", data.location);
     HTTP.post(Router.url('geolocation'), {data: data}, function(error) {
       // 2. tell watch
@@ -46,7 +61,7 @@ var watchForLocationChangesInBG = function() {
   var options = {};
 
   bgGeo.configure(success, fail, options);
-  
+
   document.addEventListener("pause", function() {
     console.log('cordova:pause');
     bgGeo.start();
