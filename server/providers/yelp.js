@@ -38,15 +38,29 @@ Yelp = {
       var businesses = results.data.businesses
 
       return _.map(businesses, function(business) {
+        var deal = business.deals[0];
+        var option = deal.options[0];
+
         return {
-          name: business.name,
+          merchant: business.name,
+          description: deal.what_you_get,
           location: {
             type: "Point",
             coordinates: [
               business.location.coordinate.longitude,
               business.location.coordinate.latitude
-            ]
+            ],
+            address: business.location.display_address.join(' ')
           },
+
+          dealUrl: deal.url,
+          // TODO -- low quality, find a better one?
+          imageUrl: business.image_url,
+
+          value: option.original_price,
+          price: option.price,
+
+          type: 'yelp',
           metadata: business
         };
       });

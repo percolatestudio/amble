@@ -2,13 +2,12 @@ Deals.loadDealsForUser = function(user) {
   console.log('Loading deals for ', user.profile.name);
 
   var deals = [];
-  deals.push(Yelp.loadDeals(user.profile.lastLocation));
-  deals.push(Groupon.loadDeals(user.profile.lastLocation));
+  deals = deals.concat(Yelp.loadDeals(user.profile.lastLocation));
+  deals = deals.concat(Groupon.loadDeals(user.profile.lastLocation));
 
   _.each(deals, function(deal) {
-    var doc = _.extend({userId: user._id}, deal);
-    // TODO -- add a schema a check it here?
-    Deals.upsert(_.pick(doc, 'name', 'userId'), doc);
+    deal.userId = user._id;
+    Deals.mutate.upsert(deal);
   });
 };
 

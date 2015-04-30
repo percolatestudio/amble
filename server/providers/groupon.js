@@ -60,24 +60,36 @@ Groupon = {
         Meteor.settings.groupon.usAffiliateId + '_212556_0';
     }
 
-    console.log(params);
-
     var results = HTTP.get(url, {params: params});
     var deals = results.data.deals;
 
     return _.map(deals, function(deal) {
+      // TODO -- one deal per option or just pick the first?
+      var option = deal.options[0];
+
       return {
-        name: deal.name,
-        // location: {
-        //   type: "Point",
-        //   coordinates: [
-        //     place.location.longitude,
-        //     place.location.latitude
-        //   ]
-        // },
+        merchant: deal.merchant.name,
+        description: { type: String },
+        location: {
+          type: "Point",
+          coordinates: [
+            option.redemptionLocations.lng,
+            option.redemptionLocations.lat
+          ],
+          address: option.redemptionLocations.streetAddress1 + ' ' +
+            option.redemptionLocations.streetAddress2
+        },
+
+        dealUrl: deal.dealUrl,
+        imageUrl: deal.largeImageUrl,
+
+        value: option.value.amount,
+        price: option.price.amount,
+        expiry: new Date(deal.endsAt),
+
+        type: 'groupon',
         metadata: deal
       };
     });
   }
 }
-

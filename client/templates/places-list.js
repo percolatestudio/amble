@@ -3,18 +3,18 @@ Template.placesList.created = function() {
   self.autorun(function() {
     var latLng = Meteor.user().profile.lastLocation;
     if (latLng) {
-      self.subscribe('places/list', latLng);
+      self.subscribe('deals/list', latLng);
     }
   });
 };
 
 Template.placesList.helpers({
   places: function() {
-    return Places.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
+    return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
   },
 
   hasPlaces: function() {
-    return Places.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
+    return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
   },
 
   address: function() {
