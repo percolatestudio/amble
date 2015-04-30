@@ -66,18 +66,19 @@ Groupon = {
     return _.map(deals, function(deal) {
       // TODO -- one deal per option or just pick the first?
       var option = deal.options[0];
+      var location = option.redemptionLocations[0];
 
       return {
         merchant: deal.merchant.name,
-        description: { type: String },
+        description: deal.announcementTitle,
         location: {
           type: "Point",
           coordinates: [
-            option.redemptionLocations.lng,
-            option.redemptionLocations.lat
+            location.lng,
+            location.lat
           ],
-          address: option.redemptionLocations.streetAddress1 + ' ' +
-            option.redemptionLocations.streetAddress2
+          address: location.streetAddress1 + ' ' +
+            location.streetAddress2
         },
 
         dealUrl: deal.dealUrl,
@@ -85,7 +86,7 @@ Groupon = {
 
         value: option.value.amount,
         price: option.price.amount,
-        expiry: new Date(deal.endsAt),
+        expiry: new Date(deal.endAt),
 
         type: 'groupon',
         metadata: deal
