@@ -77,8 +77,11 @@ Groupon = {
             location.lng,
             location.lat
           ],
-          address: location.streetAddress1 + ' ' +
-            location.streetAddress2
+          address: location.streetAddress1,
+          city: location.city,
+          postalCode: location.postalCode,
+          state: location.state,
+          country: location.country || lastLocation.country || 'US',
         },
 
         dealUrl: deal.dealUrl,

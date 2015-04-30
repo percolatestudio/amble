@@ -50,7 +50,11 @@ Yelp = {
               business.location.coordinate.longitude,
               business.location.coordinate.latitude
             ],
-            address: business.location.display_address.join(' ')
+            address: business.location.address.join(' '),
+            city: business.location.city,
+            postalCode: business.location.postal_code,
+            state: business.location.state_code,
+            country: business.location.country_code
           },
 
           dealUrl: deal.url,
