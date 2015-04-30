@@ -1,0 +1,21 @@
+<template name="app">
+  {{#if currentUser}}
+    {{> yield}}
+    <div class="tab-nav">
+      {{#each tabs}}
+        {{> _tabItem }}
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="wrapper-message">
+      <div class="title-message">We don't know who you are!</div>
+      <div class="subtitle-message">Sign in to Facebook so we can trust you.</div>
+      <br/>
+      {{> loginButton}}
+    </div>
+  {{/if}}
+</template>
+
+<template name="_tabItem">
+  <a href="#" class="tab-button {{#if isActive}}active{{/if}}">{{ this }}</a>
+</template>

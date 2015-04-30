@@ -1,0 +1,26 @@
+<template name="dealsList">
+  <div class="content-scrollable deals-list">
+    {{#if hasDeals}}
+      {{#each deals}}
+        <a class="deal-item">
+         <div class="bg-image" style="background-image: url('{{imageUrl}}');">
+          <span class="deal-sticker">{{sticker}}</span>
+          <div class="deal-info">
+            <span class="deal-desc">{{description}}</span>
+            <div style="margin-top: 5px;">
+              <span class="deal-loc">{{merchant}}&mdash;{{distance}}</span>
+            </div>
+          </div>
+        </div>
+        </a>
+      {{/each}}
+      <div>
+        <a href="#" class="btn-push js-push-me">Push Me</a>
+      </div>
+      <div style="height: 44px"></div>
+    {{else}}
+      Loading...
+    {{/if}}
+  </div>
+</template>
+

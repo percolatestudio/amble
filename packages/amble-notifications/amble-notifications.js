@@ -25,12 +25,14 @@ AmbleNotifications = {
     var title = "DEAL NEAR YOU";
     var message = deal.name + " is only steps away!";
     var notification = {
-       from: 'Amble',
-       title: title,
-       text: message,
-       payload: payload,
-       sound: "default",
-       category: "default"
+      from: 'Amble',
+      text: {
+        title: title,
+        body: message
+      },
+      payload: payload,
+      sound: "default",
+      category: "default"
     };
 
     Push.appCollection.find({userId: userId}).forEach(function(app) {
