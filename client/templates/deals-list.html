@@ -2,15 +2,10 @@
   <div class="content-scrollable deals-list">
     {{#if hasDeals}}
       {{#each deals}}
-        <a class="deal-item">
+        <a href="{{pathFor route='deal' data=dealData }}" class="deal-item">
          <div class="bg-image" style="background-image: url('{{imageUrl}}');">
           <span class="deal-sticker">{{sticker}}</span>
-          <div class="deal-info">
-            <span class="deal-desc">{{description}}</span>
-            <div style="margin-top: 5px;">
-              <span class="deal-loc">{{merchant}}&mdash;{{distance}}</span>
-            </div>
-          </div>
+          {{> dealInfo }}
         </div>
         </a>
       {{/each}}

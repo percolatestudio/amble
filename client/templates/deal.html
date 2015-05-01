@@ -1,0 +1,33 @@
+<template name="deal">
+  <div class="page deal">
+    {{#nav back=true }}
+      <a href="#" class="btn-save {{#if isSaved}}saved{{/if}} js-save">
+        <span>{{#if isSaved}}SAVED{{else}}SAVE{{/if}}</span>
+      </a>
+    {{/nav}}
+  
+    <div class="bg-image" style="background-image: url('{{imageUrl}}')">
+      {{> dealInfo }}
+    </div>
+    <a href="#" class="deal-detail red js-get-deal">
+      <span class="deal-text-small heavy">GET DEAL</span>
+      <div class="deal-detail-middle">
+        <span class="deal-text-large">{{priceOrDiscount}}</span><span class="deal-text-small units">{{currency}}</span>
+      </div>
+      <div class="deal-detail-footer">
+        <span class="deal-text-small block">{{timeRemaining}}</span>
+        <span class="deal-text-small block">{{discount}}</span>
+      </div>
+    </a>
+    <a href="#" class="deal-detail green js-get-directions">
+      <span class="deal-text-small heavy">DIRECTIONS</span>
+      <div class="deal-detail-middle">
+        <span class="deal-text-large">{{distance}}</span><span class="deal-text-small units">{{units}}</span>
+      </div>
+      <div class="deal-detail-footer">
+        <span class="deal-text-small block">{{street}}</span>
+        <span class="deal-text-small block">{{cityState}}</span>
+      </div>
+    </a>
+  </div>
+</template>

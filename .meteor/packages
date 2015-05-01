@@ -18,3 +18,4 @@ iron:router
 oauth1
 less
 aldeed:simple-schema
+reactive-var

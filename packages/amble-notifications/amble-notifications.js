@@ -3,27 +3,19 @@ AmbleNotifications = {
   sendDeal: function(userId, deal) {
     var payload = {
       poi: {
-        name: deal.name,
+        name: deal.merchant,
         loc: {
           long: deal.location.coordinates[0].toString(),
           lat: deal.location.coordinates[1].toString(),
         }
       }
     };
-    var location = deal.metadata && deal.metadata.location;
-    if (location) {
-      var street = location.street ? location.street + "\n" : "";
-      var city = location.city ? location.city + ", " : "";
-      var state = location.state ? location.state + "\n" : "";
-      var country = location.country || "";
-      var address = street + city + state + country;
-      payload.poi.address = address;
-    }
-
+    payload.poi.address = deal.location.address;
+    
     console.log("Notifying", userId, EJSON.stringify(EJSON.stringify(payload)));
 
     var title = "DEAL NEAR YOU";
-    var message = deal.name + " is only steps away!";
+    var message = deal.description;
     var notification = {
       from: 'Amble',
       text: {

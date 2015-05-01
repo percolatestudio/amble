@@ -12,6 +12,17 @@ var getCountry = function(latLng) {
 
 var getCountryDebounced = _.debounce(getCountry, 1000 * 60 * CHECK_COUNTRY_EVERY_MINS, true);
 
+var watchForDeals = function() {
+  Tracker.autorun(function() {
+    if (Meteor.user()) {
+      var latLng = Meteor.user().profile.lastLocation;
+      if (latLng) {
+        Meteor.subscribe('deals/list', latLng);
+      }
+    }
+  });
+}
+
 var watchForLocationChangesInFG = function() {
   Tracker.autorun(function() {
     var latLng = Geolocation.latLng();
@@ -20,7 +31,7 @@ var watchForLocationChangesInFG = function() {
       if (Meteor.isCordova) {
         AmbleWatch.updateLocation(latLng);
       }
-      if (Meteor.userId()) {
+      if (Meteor.user()) {
         console.log("updating location from foreground: ", latLng);
         Meteor.users.updateLocation(Meteor.userId(), latLng);
 
@@ -103,4 +114,5 @@ Meteor.startup(function() {
   } else {
     watchForLocationChangesInFG();
   }
+  watchForDeals();
 });

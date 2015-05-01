@@ -1,0 +1,81 @@
+.deal {
+  overflow-y: hidden;
+
+  .bg-image {
+    .transform(translate3d(0,0,0));//Gpu rendering
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 75%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &:before {
+      .position(absolute, 0,0,0,0);
+      background: rgba(0,0,0,.3);
+      content: '';
+      opacity: 0;
+      z-index: 2;
+    }
+  }
+
+  .btn-save {
+    position: relative;
+    border: 2px solid white;
+    top: 15px;
+    right: 15px;
+    
+    &.saved {
+      font-weight: bold;
+      border: 3px solid white;
+    }
+  }
+
+  .deal-detail {
+    color: white;
+    width: 50%;
+    float: left;
+    height: 25%;
+
+    &.red {
+      background-color: rgba(224, 55, 112, 0.9);
+    }
+
+    &.green {
+      background-color: rgba(20, 190, 151, 1.0);
+    }
+
+    .deal-detail-middle {
+      text-align: center;
+      position: relative;
+      top: 15%;
+    }
+    
+    .deal-detail-footer {
+      text-align: center;
+      position: relative;
+      top: 20%;
+    }
+
+    .deal-text-large {
+      font-size: 3.5em;
+      font-weight: normal;
+    }
+
+    .deal-text-small {
+      font-size: 0.8em;
+
+      &.heavy {
+        font-weight: bold;
+        position: relative;
+        left: 10px;
+        top: 10px;
+      }
+
+      &.block {
+        display: block
+      }
+    }
+  }
+}

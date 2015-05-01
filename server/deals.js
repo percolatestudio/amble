@@ -28,6 +28,10 @@ Meteor.publish('deals/list', function(latLng) {
   return Deals.findNearby(self.userId, latLng);
 });
 
+Meteor.publish('deal', function(id) {
+  return Deals.find(id);
+});
+
 Meteor.methods({
   'deals/sendNearestToMe': function() {
     Meteor.users.sendNearestDeal(Meteor.userId(), true);

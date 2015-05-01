@@ -1,0 +1,25 @@
+.about {
+  .bg-image {
+    .transform(translate3d(0,0,0));//Gpu rendering
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &:before {
+      .position(absolute, 0,0,0,0);
+      background: rgba(0,0,0,.3);
+      content: '';
+      opacity: 0;
+      z-index: 2;
+    }
+  }
+
+  .description {
+    line-height: 2em;
+    margin: 20px;
+  }
+}
