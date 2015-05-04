@@ -1,18 +1,29 @@
 <template name="dealsList">
   <div class="content-scrollable deals-list">
-    {{#if hasDeals}}
-      {{#each deals}}
-        <a href="{{pathFor route='deal' data=dealData }}" class="deal-item">
-         <div class="bg-image" style="background-image: url('{{imageUrl}}');">
-          <span class="deal-sticker">{{sticker}}</span>
-          {{> dealInfo }}
+    {{#if Template.subscriptionsReady}}
+      {{#if hasDeals}}
+        {{#each deals}}
+          <a href="{{pathFor route='deal' data=dealData }}" class="deal-item">
+           <div class="bg-image" style="background-image: url('{{imageUrl}}');">
+            <span class="deal-sticker">{{sticker}}</span>
+            {{> dealInfo }}
+          </div>
+          </a>
+        {{/each}}
+        <div>
+          <a href="#" class="btn-push js-push-me">Push Me</a>
         </div>
-        </a>
-      {{/each}}
-      <div>
-        <a href="#" class="btn-push js-push-me">Push Me</a>
-      </div>
-      <div style="height: 44px"></div>
+        <div style="height: 44px"></div>
+      {{else}}
+        <div class="wrapper-message">
+          <div class="title-message">No Deals</div>
+          {{#if saved}}
+            <div class="subtitle-message">You have no saved deals. Get saving!</div>
+          {{else}}
+            <div class="subtitle-message">Sadly we couldn't find any deals near you. Check back soon!</div>
+          {{/if}}
+        </div>
+      {{/if}}
     {{else}}
       Loading...
     {{/if}}

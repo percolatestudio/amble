@@ -3,12 +3,26 @@ Template.dealsList.helpers({
     return _.extend(this, Template.parentData());
   },
 
+  saved: function() {
+    return this.activeTab === "saved";
+  },
+
   deals: function() {
-    return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
+    if (this.activeTab === "saved") {
+      return Deals.findSaved(Meteor.userId());
+    }
+    else {
+      return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
+    }
   },
 
   hasDeals: function() {
-    return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
+    if (this.activeTab === "saved") {
+      return Deals.findSaved(Meteor.userId()).count() > 0;
+    }
+    else {
+      return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
+    }
   },
 
   sticker: function() {

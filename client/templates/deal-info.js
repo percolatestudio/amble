@@ -1,6 +1,6 @@
 Template.dealInfo.helpers({
   distance: function() {
-    if (!Meteor.user().profile.lastLocation) {
+    if (!(Meteor.user() && Meteor.user().profile.lastLocation && this.location && this.location.coordinates)) {
       return "--";
     }
 

@@ -19,6 +19,7 @@ var watchForDeals = function() {
       if (latLng) {
         Meteor.subscribe('deals/list', latLng);
       }
+      Meteor.subscribe('deals/saved');
     }
   });
 }

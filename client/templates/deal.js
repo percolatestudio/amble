@@ -1,16 +1,15 @@
-var saved = new ReactiveVar(false);
-
-Template.deal.onRendered(function() {
-  console.log(this.data);
-  saved.set(false);
+Template.deal.onCreated(function() {
+  if (this.data) {
+    this.subscribe('deal', this.data._id);
+  }
 });
 
 Template.deal.helpers({
   isSaved: function() {
-    return saved.get();
+    return _.contains(Meteor.user().profile.savedDeals, this._id);
   },
   distance: function() {
-    if (!Meteor.user().profile.lastLocation) {
+    if (!(Meteor.user() && Meteor.user().profile.lastLocation && this.location && this.location.coordinates)) {
       return "--";
     }
 
@@ -32,8 +31,8 @@ Template.deal.helpers({
     var hours = totalHours % 24;
     return days + 'D ' + hours + 'HR TO GO';
   },
-  priceOrDiscount: function() {
-    return this.price ? this.price / 100 : this.value;
+  valueMetric: function() {
+    return this.price ? this.price / 100 : '-' + Math.round(100 * (1.0 - (this.price / this.value))) + '%';
   },
   discount: function() {
     return Math.round(100 * (1.0 - (this.price / this.value))) + '% OFF';
@@ -42,6 +41,9 @@ Template.deal.helpers({
     return '$';
   },
   street: function() {
+    if (!this.location) {
+      return "--";
+    }
     var cityPost = this.location.city + " " + this.location.postalCode;
     var cityInStreet = this.location.address.indexOf(cityPost);
     if (cityInStreet != -1) {
@@ -50,6 +52,9 @@ Template.deal.helpers({
     return this.location.address;
   },
   cityState: function() {
+    if (!this.location) {
+      return "--";
+    }
     var cityState = this.location.city;
     if (this.location.state)
       cityState += "," + this.location.state;
@@ -60,7 +65,12 @@ Template.deal.helpers({
 Template.deal.events({
   'click .js-save': function(e, template) {
     e.preventDefault();
-    saved.set(!saved.get());
+    if (!_.contains(Meteor.user().profile.savedDeals, template.data._id)) {
+      Meteor.call('deals/save', { dealId: template.data._id });
+    }
+    else {
+      Meteor.call('deals/unsave', { dealId: template.data._id });
+    }
   },
   'click .js-get-deal': function(e, template) {
     e.preventDefault();
@@ -68,7 +78,14 @@ Template.deal.events({
   },
   'click .js-get-directions': function(e, template) {
     e.preventDefault();
-    var appleMapsUrl = "http://maps.apple.com/?daddr=" + encodeURIComponent(template.data.location.address);
+    var srcAddr;
+    var currentLocation = Meteor.user().profile.lastLocation;
+    if (currentLocation) {
+      srcAddr = "?saddr=" + currentLocation.lat + "," + currentLocation.lng;
+    }
+    var dstAddr = "daddr=" + encodeURIComponent(template.data.location.address);
+    dstAddr = srcAddr ? "&" + dstAddr : "?" + dstAddr;
+    var appleMapsUrl = "http://maps.apple.com/" + srcAddr + dstAddr;
     window.open(appleMapsUrl, '_system');
   }
 });
