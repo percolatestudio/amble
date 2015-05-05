@@ -58,8 +58,9 @@ Yelp = {
           },
 
           dealUrl: deal.url,
-          // TODO -- low quality, find a better one?
-          imageUrl: business.image_url,
+
+          // use the large image URL see http://stackoverflow.com/a/23175327/670639
+          imageUrl: business.image_url.replace(/\/[^\/]*\.jpg/, '/l.jpg'),
 
           value: option.original_price,
           price: option.price,
