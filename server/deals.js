@@ -6,6 +6,7 @@ Deals.loadDealsForUser = function(user) {
     return;
   }
   console.log('Loading deals for ', user.profile.name);
+  Meteor.users.dealsUpdated(user._id);
 
   var deals = [];
   var yelpDeals = Yelp.loadDeals(user.profile.lastLocation);
@@ -18,10 +19,8 @@ Deals.loadDealsForUser = function(user) {
   }
 
   _.each(deals, function(deal) {
-    deal.userId = user._id;
     Deals.mutate.upsert(deal);
   });
-  Meteor.users.dealsUpdated(user._id);
 };
 
 Meteor.publish('deals/list', function(latLng) {
@@ -32,7 +31,7 @@ Meteor.publish('deals/list', function(latLng) {
     Deals.loadDealsForUser(user);
   });
 
-  return Deals.findNearby(self.userId, latLng);
+  return Deals.findNearby(latLng);
 });
 
 Meteor.publish('deals/saved', function() {

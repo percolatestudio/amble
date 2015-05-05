@@ -43,6 +43,7 @@ Yelp = {
         var description = deal.what_you_get.split('\n')[0];
 
         return {
+          providerId: 'yelp-' + deal.id,
           merchant: business.name,
           description: description,
           location: {

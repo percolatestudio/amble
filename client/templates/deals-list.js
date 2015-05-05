@@ -12,7 +12,7 @@ Template.dealsList.helpers({
       return Deals.findSaved(Meteor.userId());
     }
     else {
-      return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation);
+      return Deals.findNearby(Meteor.user().profile.lastLocation);
     }
   },
 
@@ -21,7 +21,7 @@ Template.dealsList.helpers({
       return Deals.findSaved(Meteor.userId()).count() > 0;
     }
     else {
-      return Deals.findNearby(Meteor.userId(), Meteor.user().profile.lastLocation).count() > 0;
+      return Deals.findNearby(Meteor.user().profile.lastLocation).count() > 0;
     }
   },
 

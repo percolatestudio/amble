@@ -70,6 +70,7 @@ Groupon = {
         var location = option.redemptionLocations[0];
 
         return {
+          providerId: 'groupon-' + deal.id,
           merchant: deal.merchant.name,
           description: deal.announcementTitle,
           location: {
