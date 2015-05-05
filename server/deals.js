@@ -5,7 +5,6 @@ Deals.loadDealsForUser = function(user) {
   if (timeSinceUpdated < Deals.PER_USER_REFRESH_DELAY) {
     return;
   }
-  Meteor.users.dealsUpdated(user._id);
   console.log('Loading deals for ', user.profile.name);
 
   var deals = [];
@@ -22,6 +21,7 @@ Deals.loadDealsForUser = function(user) {
     deal.userId = user._id;
     Deals.mutate.upsert(deal);
   });
+  Meteor.users.dealsUpdated(user._id);
 };
 
 Meteor.publish('deals/list', function(latLng) {
@@ -38,7 +38,7 @@ Meteor.publish('deals/list', function(latLng) {
 Meteor.publish('deals/saved', function() {
   var self = this;
   var user = Meteor.users.findOne(self.userId);
-  return Deals.find({_id: {$in: user.profile.savedDeals }});
+  return Deals.find({_id: {$in: user.profile.savedDeals || [] }});
 });
 
 Meteor.publish('deal', function(id) {
