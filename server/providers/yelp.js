@@ -40,10 +40,11 @@ Yelp = {
       return _.map(businesses, function(business) {
         var deal = business.deals[0];
         var option = deal.options[0];
+        var description = deal.what_you_get.split('\n')[0];
 
         return {
           merchant: business.name,
-          description: deal.what_you_get,
+          description: description,
           location: {
             type: "Point",
             coordinates: [
