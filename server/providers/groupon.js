@@ -99,6 +99,7 @@ Groupon = {
       });
     }
     catch (e) {
+      console.log("groupon API exception");
       console.log(e.message);
     }
   }

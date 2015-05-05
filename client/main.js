@@ -29,15 +29,16 @@ var watchForLocationChangesInFG = function() {
     var latLng = Geolocation.latLng();
     var error = Geolocation.error();
     if (latLng) {
-      if (Meteor.isCordova) {
-        AmbleWatch.updateLocation(latLng);
-      }
-      if (Meteor.user()) {
-        console.log("updating location from foreground: ", latLng);
-        Meteor.users.updateLocation(Meteor.userId(), latLng);
-
-        getCountryDebounced(latLng);
-      }
+      _.throttle(function() {
+        if (Meteor.isCordova) {
+          AmbleWatch.updateLocation(latLng);
+        }
+        if (Meteor.user()) {
+          console.log("updating location from foreground: ", latLng);
+          Meteor.users.updateLocation(Meteor.userId(), latLng);
+          getCountryDebounced(latLng);
+        }
+      }, 1000);
     }
     if (error) {
       console.log(error);

@@ -18,7 +18,7 @@ Template.deal.helpers({
       lat: this.location.coordinates[1]
     };
     var distance = Geocode.getDistanceAsCrow(Meteor.user().profile.lastLocation, latLng);
-    var units = Meteor.user().profile.lastLocation.country === 'US' ? 'mi' : 'km';
+    var units = this.country === 'US' ? 'mi' : 'km';
     var distance = units === 'mi' ? distance / 1.6 : distance;
     return distance.toFixed(1);
   },

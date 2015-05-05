@@ -1,112 +1,286 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="p0A-vP-LKq">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Amble Interface Controller-->
-        <scene sceneID="aou-V4-d1y">
+        <!--App Root-->
+        <scene sceneID="JRX-ji-Aw5">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="AmbleInterfaceController" customModule="Amble_WatchKit_Extension">
+                <controller identifier="AmbleAppViewController" id="p0A-vP-LKq" userLabel="App Root" customClass="AmbleAppViewController" customModule="Amble_WatchKit_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="7" y="552"/>
+        </scene>
+        <!--Deal Brief-->
+        <scene sceneID="tT6-HA-xhg">
+            <objects>
+                <controller identifier="DealBrief" title="Amble" id="Ku6-JH-VdP" userLabel="Deal Brief" customClass="DealBriefViewController" customModule="Amble_WatchKit_Extension">
                     <items>
-                        <group width="1" height="191" alignment="left" layout="vertical" id="mgq-W7-o56" userLabel="Container">
+                        <group width="1" height="1" alignment="left" backgroundImage="deals-loading" contentMode="scaleAspectFill" layout="vertical" radius="0.0" id="hIC-iC-gS4" userLabel="Container">
                             <items>
-                                <group width="1" height="121" alignment="left" backgroundImage="deals" contentMode="scaleAspectFill" layout="vertical" id="4m8-lv-gKJ" userLabel="Header">
+                                <table alignment="left" id="TWR-QV-4SY">
                                     <items>
-                                        <label alignment="right" text="AMBLE" id="9E2-GG-hRL"/>
-                                        <group width="129" alignment="center" verticalAlignment="bottom" contentMode="scaleAspectFit" layout="vertical" id="IzO-Cp-jkx" userLabel="Text">
-                                            <items>
-                                                <group alignment="center" verticalAlignment="center" id="os5-iG-d41" userLabel="Deal">
-                                                    <items>
-                                                        <label alignment="center" text="DEAL NEAR YOU" numberOfLines="5" id="gVh-fO-3Yv">
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                                        </label>
-                                                    </items>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                                </group>
-                                                <group alignment="center" verticalAlignment="center" id="epC-WB-0KK" userLabel="Info">
-                                                    <items>
-                                                        <label alignment="left" verticalAlignment="bottom" text="Find A Sweet Deal With Amble" textAlignment="left" numberOfLines="4" id="FtB-Wv-hHV">
-                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </label>
-                                                    </items>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                                </group>
-                                                <group width="1" height="20" alignment="left" verticalAlignment="bottom" id="WZF-k5-XRE" userLabel="Spacer"/>
-                                            </items>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </group>
+                                        <tableRow identifier="DealBriefRow" id="jUK-7y-hUM" customClass="DealBriefRow" customModule="Amble_WatchKit_Extension">
+                                            <group key="rootItem" width="1" height="1" alignment="left" layout="vertical" id="f1Q-n7-F7X" userLabel="Row">
+                                                <items>
+                                                    <group width="1" height="54" alignment="left" backgroundImage="sash-gradient" radius="0.0" id="uuW-Tg-ZUj" userLabel="Alpha">
+                                                        <items>
+                                                            <group alignment="right" spacing="0.0" id="9BM-pw-Vtv" userLabel="Sticker">
+                                                                <items>
+                                                                    <label alignment="right" text="  $20  " textAlignment="justified" id="Nws-Eo-GJC">
+                                                                        <fontDescription key="font" type="boldSystem" pointSize="14"/>
+                                                                    </label>
+                                                                </items>
+                                                                <color key="backgroundColor" red="0.84313725490000002" green="0.1019607843" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </group>
+                                                        </items>
+                                                        <edgeInsets key="margins" left="0.0" right="6" top="8" bottom="0.0"/>
+                                                        <variation key="device=watch42mm" height="60"/>
+                                                    </group>
+                                                    <group width="1" widthAdjustment="-8" alignment="center" verticalAlignment="bottom" contentMode="scaleAspectFit" layout="vertical" radius="0.0" id="uVP-fM-K0k" userLabel="Text">
+                                                        <items>
+                                                            <group alignment="left" verticalAlignment="bottom" radius="0.0" id="Dqy-ny-3e7" userLabel="Info">
+                                                                <items>
+                                                                    <label alignment="left" verticalAlignment="bottom" text="Incubus and Deftones at Shorline Amphitheater on August 26 at 6:15pm" textAlignment="left" numberOfLines="5" id="6U1-Sb-NF6">
+                                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                                                    </label>
+                                                                </items>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                            </group>
+                                                        </items>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="18" bottom="18"/>
+                                                    </group>
+                                                </items>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="descriptionLabel" destination="6U1-Sb-NF6" id="eHe-sY-Otx"/>
+                                                <outlet property="valueLabel" destination="Nws-Eo-GJC" id="wSw-et-JA8"/>
+                                            </connections>
+                                        </tableRow>
                                     </items>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </group>
-                                <group width="1" alignment="left" id="eG4-85-zVJ" userLabel="Map">
-                                    <items>
-                                        <map width="1" height="66" alignment="left" alpha="0.5" id="hWp-Bg-q4C"/>
-                                    </items>
-                                    <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </group>
+                                </table>
                             </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="16"/>
                         </group>
                     </items>
                     <connections>
-                        <outlet property="map" destination="hWp-Bg-q4C" id="Jij-7X-hL5"/>
-                        <outlet property="poiLabel" destination="FtB-Wv-hHV" id="PW3-z2-6qY"/>
-                        <segue destination="il7-t4-L2Z" kind="relationship" relationship="nextPage" id="I3w-F1-1sp"/>
+                        <outlet property="container" destination="hIC-iC-gS4" id="tF0-Yy-V8a"/>
+                        <outlet property="table" destination="TWR-QV-4SY" id="4cK-RR-f4H"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="328"/>
+            <point key="canvasLocation" x="7" y="312"/>
         </scene>
-        <!--Poi Detail View Controller-->
-        <scene sceneID="kn5-vT-Iuu">
+        <!--Deal Detail-->
+        <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="il7-t4-L2Z" customClass="PoiDetailViewController" customModule="Amble_WatchKit_Extension">
+                <controller identifier="DealDetail" title="&lt; Deal" spacing="0.0" id="AgC-eL-Hgc" userLabel="Deal Detail" customClass="DealDetailViewController" customModule="Amble_WatchKit_Extension">
                     <items>
-                        <label height="148.5" alignment="center" text="Name Address Line 1 Address Line 2 CIty, State Zip Country" numberOfLines="5" id="CI3-Kf-w8V"/>
+                        <table alignment="left" id="qHq-Lk-Wk5">
+                            <items>
+                                <tableRow identifier="DealDetailHeaderRow" selectable="NO" id="HL5-Iu-DaO" customClass="DealDetailHeaderRow" customModule="Amble_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" backgroundImage="deals-loading" contentMode="scaleAspectFill" layout="vertical" radius="0.0" spacing="0.0" id="xEM-o0-tZ9" userLabel="Container">
+                                        <items>
+                                            <group width="1" height="54" alignment="left" backgroundImage="sash-gradient" radius="0.0" id="i26-Cy-cwM" userLabel="Alpha">
+                                                <items>
+                                                    <group alignment="right" spacing="0.0" id="92i-0V-noe" userLabel="Sticker">
+                                                        <items>
+                                                            <label alignment="right" text="  $20  " textAlignment="justified" id="9E2-GG-hRL">
+                                                                <fontDescription key="font" type="boldSystem" pointSize="14"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.84313725490196079" green="0.10196078431372549" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </group>
+                                                </items>
+                                                <edgeInsets key="margins" left="0.0" right="6" top="8" bottom="0.0"/>
+                                                <variation key="device=watch42mm" height="60"/>
+                                            </group>
+                                            <group width="1" widthAdjustment="-8" alignment="center" contentMode="scaleAspectFit" layout="vertical" radius="0.0" id="IzO-Cp-jkx" userLabel="Text">
+                                                <items>
+                                                    <group alignment="left" radius="0.0" id="os5-iG-d41" userLabel="Deal">
+                                                        <items>
+                                                            <label alignment="center" text="DEAL NEAR YOU" numberOfLines="5" id="gVh-fO-3Yv">
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="font" type="system" weight="heavy" pointSize="12"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                    </group>
+                                                    <group alignment="left" radius="0.0" id="epC-WB-0KK" userLabel="Info">
+                                                        <items>
+                                                            <label alignment="left" verticalAlignment="bottom" text="Incubus and Deftones at Shorline Amphitheater on August 26 at 6:15pm" textAlignment="left" numberOfLines="5" id="FtB-Wv-hHV">
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                                    </group>
+                                                </items>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="30" bottom="4"/>
+                                            </group>
+                                        </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="container" destination="xEM-o0-tZ9" id="SjS-c7-V8y"/>
+                                        <outlet property="dealNearYouLabel" destination="gVh-fO-3Yv" id="Hke-FG-4bb"/>
+                                        <outlet property="descriptionLabel" destination="FtB-Wv-hHV" id="RXd-xZ-0RT"/>
+                                        <outlet property="valueLabel" destination="9E2-GG-hRL" id="lky-Yg-AXa"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="DealDetailMapRow" selectable="NO" id="ynf-Zv-7cE" customClass="DealDetailMapRow" customModule="Amble_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" spacing="0.0" id="GWD-Js-D6B" userLabel="Container">
+                                        <items>
+                                            <label alignment="left" text="GET DIRECTIONS" id="g0d-gz-3CD">
+                                                <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                            </label>
+                                            <label alignment="left" text="1.7" id="syo-tv-mg7">
+                                                <fontDescription key="font" type="system" pointSize="26"/>
+                                            </label>
+                                            <label alignment="left" text="SHORELINE AMPHITHEATER" id="Z4z-Ct-SlI">
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                            </label>
+                                            <label alignment="left" text="639 FREED ST." id="M7d-U8-JJY">
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                            </label>
+                                            <group width="1" height="10" alignment="left" id="yad-30-2DM" userLabel="Spacer"/>
+                                            <map width="1" height="75" alignment="left" alpha="0.5" id="hWp-Bg-q4C"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.16470588235294117" green="0.67450980392156867" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="addressLabel" destination="M7d-U8-JJY" id="te8-2D-9vV"/>
+                                        <outlet property="distanceLabel" destination="syo-tv-mg7" id="zUr-wT-S8N"/>
+                                        <outlet property="getDirectionsLabel" destination="g0d-gz-3CD" id="wNO-Uv-yCU"/>
+                                        <outlet property="map" destination="hWp-Bg-q4C" id="Vdn-Gf-qVc"/>
+                                        <outlet property="merchantLabel" destination="Z4z-Ct-SlI" id="Af5-0D-wH0"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="DealDetailActionRow" id="WxA-6C-e4H" customClass="DealDetailActionRow" customModule="Amble_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="0.0" spacing="0.0" id="IPf-I8-n8N" userLabel="Container">
+                                        <items>
+                                            <label alignment="left" text="BUY DEAL" id="bf6-jY-MaI">
+                                                <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                            </label>
+                                            <label alignment="left" text="20" id="cUj-WY-aWX">
+                                                <fontDescription key="font" type="system" pointSize="26"/>
+                                            </label>
+                                            <label alignment="left" text="7D 4HR TO GO" id="TzB-ZO-hxV">
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                            </label>
+                                            <label alignment="left" text="33% OFF" id="NbM-OF-biF">
+                                                <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.84313725490196079" green="0.10196078431372549" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="8" right="8" top="8" bottom="8"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="buyDealLabel" destination="bf6-jY-MaI" id="F6W-gz-8X8"/>
+                                        <outlet property="discountLabel" destination="NbM-OF-biF" id="qlN-mh-sRE"/>
+                                        <outlet property="timeRemainingLabel" destination="TzB-ZO-hxV" id="LJQ-ub-amO"/>
+                                        <outlet property="valueLabel" destination="cUj-WY-aWX" id="qbv-Zt-QEc"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="DealDetailSaveRow" id="16F-ME-lpQ" customClass="DealDetailSaveRow" customModule="Amble_WatchKit_Extension">
+                                    <group key="rootItem" width="1" alignment="left" radius="0.0" spacing="0.0" id="j6t-Lv-5hj" userLabel="Container">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="SAVE DEAL" id="nZS-XP-4o9">
+                                                <color key="textColor" red="0.22745098039215686" green="0.72156862745098038" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="saveDealLabel" destination="nZS-XP-4o9" id="Wfd-9G-smk"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
-                        <outlet property="addressLabel" destination="CI3-Kf-w8V" id="uN9-6C-a8V"/>
+                        <outlet property="table" destination="qHq-Lk-Wk5" id="afH-1P-ozK"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="446" y="287"/>
+            <point key="canvasLocation" x="220" y="430"/>
         </scene>
-        <!--Static Notification Interface Controller-->
+        <!--Static Notification-->
         <scene sceneID="AEw-b0-oYE">
             <objects>
-                <notificationController id="YCC-NB-fut">
+                <notificationController backgroundImage="deals-loading" id="YCC-NB-fut" userLabel="Static Notification">
                     <items>
-                        <label width="136" height="55.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="ebV-kG-iUK"/>
+                        <group width="1" alignment="left" radius="0.0" id="tdK-lC-m9F">
+                            <items>
+                                <label alignment="center" text="Deal near you" numberOfLines="2" id="ebV-kG-iUK"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="30" bottom="30"/>
+                        </group>
                     </items>
-                    <notificationCategory key="notificationCategory" id="JfB-70-Muf"/>
+                    <notificationCategory key="notificationCategory" id="JfB-70-Muf">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sashColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </notificationCategory>
                     <connections>
                         <outlet property="notificationAlertLabel" destination="ebV-kG-iUK" id="wMd-bi-WBM"/>
                         <segue destination="KaH-rr-bkP" kind="relationship" relationship="dynamicNotificationInterface" id="vuj-Md-2HA"/>
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="7" y="-65.5"/>
         </scene>
-        <!--Amble Notification Controller-->
+        <!--Dynamic Notification-->
         <scene sceneID="0p6-iJ-Q41">
             <objects>
-                <controller id="KaH-rr-bkP" customClass="AmbleNotificationController" customModule="Amble_WatchKit_Extension">
+                <controller backgroundImage="deals-loading" id="KaH-rr-bkP" userLabel="Dynamic Notification" customClass="AmbleNotificationController" customModule="Amble_WatchKit_Extension">
                     <items>
-                        <label width="136" height="40.5" alignment="left" text="Something cool is nearby!" numberOfLines="2" id="IdU-wH-bcW"/>
-                        <label width="136" height="39" alignment="left" text="85 High St Northcote VIC" numberOfLines="2" id="7Ah-iC-dwh">
-                            <color key="textColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                        </label>
+                        <group width="1" alignment="left" backgroundImage="deals-loading" contentMode="scaleAspectFill" layout="vertical" radius="0.0" spacing="0.0" id="chc-3q-LX8" userLabel="Container">
+                            <items>
+                                <group width="1" height="54" alignment="left" backgroundImage="sash-gradient" radius="0.0" id="gzi-Zc-6Ls" userLabel="Alpha">
+                                    <edgeInsets key="margins" left="0.0" right="6" top="8" bottom="0.0"/>
+                                    <variation key="device=watch42mm" height="60"/>
+                                </group>
+                                <group width="1" widthAdjustment="-8" alignment="center" contentMode="scaleAspectFit" layout="vertical" id="Lxs-Rl-GaY" userLabel="Text">
+                                    <items>
+                                        <group alignment="left" radius="0.0" id="VM3-3s-Eul" userLabel="Deal">
+                                            <items>
+                                                <label alignment="center" text="DEAL NEAR YOU" numberOfLines="5" id="VaF-Gx-3nh">
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="font" type="system" weight="heavy" pointSize="12"/>
+                                                </label>
+                                            </items>
+                                            <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        </group>
+                                        <group alignment="left" radius="0.0" id="vnS-I2-itL" userLabel="Info">
+                                            <items>
+                                                <label alignment="left" verticalAlignment="bottom" text="Incubus and Deftones at Shorline Amphitheater on August 26 at 6:15pm" textAlignment="left" numberOfLines="5" id="M3z-SD-QxX">
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="font" type="boldSystem" pointSize="12"/>
+                                                </label>
+                                            </items>
+                                            <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        </group>
+                                    </items>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="30" bottom="4"/>
+                                </group>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="8"/>
+                        </group>
                     </items>
                     <connections>
-                        <outlet property="footerLabel" destination="7Ah-iC-dwh" id="eb1-0a-xk6"/>
-                        <outlet property="headerLabel" destination="IdU-wH-bcW" id="gSQ-sK-jQB"/>
+                        <outlet property="container" destination="chc-3q-LX8" id="Rtl-d0-1Hj"/>
+                        <outlet property="descriptionLabel" destination="M3z-SD-QxX" id="cS4-6h-Ms7"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="423" y="645"/>
+            <point key="canvasLocation" x="220" y="-23"/>
         </scene>
     </scenes>
 </document>

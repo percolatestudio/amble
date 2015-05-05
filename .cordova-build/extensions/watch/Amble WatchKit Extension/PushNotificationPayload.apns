@@ -1,29 +1,24 @@
 {
     "aps": {
         "alert": {
-            "title": "Something cool is nearby!",
-            "body": "Cafe Barry is only steps away (Tim H likes this)"
+            "title": "DEAL NEAR YOU",
+            "body": "Chilli Mud Crab Feast at Zio's"
         },
         "category": "default"
     },
     
     "WatchKit Simulator Actions": [
         {
-            "title": "Check it out...",
+            "title": "Get Deal",
             "identifier": "view"
         },
         {
-            "title": "Save for later",
+            "title": "Save",
             "identifier": "save"
-        },
-        {
-            "title": "No Thanks",
-            "identifier": "noThanks",
-            "destructive": 1
         }
     ],
     
     "customKey": "Use this file to define a testing payload for your notifications. The aps dictionary specifies the category, alert text and title. The WatchKit Simulator Actions array can provide info for one or more action buttons in addition to the standard Dismiss button. Any other top level keys are custom payload. If you have multiple such JSON files in your project, you'll be able to select them when choosing to debug the notification interface of your Watch App.",
     
-    "ejson": "{\"poi\":{\"name\":\"Cafe Barry\",\"address\":\"85 High Street\\nNorthcote VIC\",\"loc\":{\"long\":\"144.996657\",\"lat\":\"-37.780207\"}}}"
+    "ejson": "{\"deal\":{\"_id\":\"Xoqb7fDBGt8vXTebp\",\"providerId\":\"groupon-zio-s-restaurant-2-720130019\",\"merchant\":\"Zio's Restaurant\",\"description\":\"Chilli Mud Crab Feast at Zio's\",\"location\":{\"type\":\"Point\",\"coordinates\":[144.978429,-37.809231],\"address\":\"14 Lansdowne Street East Melbourne 3002\",\"city\":\"East Melbourne\",\"postalCode\":\"3002\",\"state\":null,\"country\":\"AU\"},\"dealUrl\":\"http://www.groupon.com.au/deals/melbourne/zio-s-restaurant-2/720130019\",\"imageUrl\":\"http://static.au.groupon-content.net/42/78/1429490987842.jpg\",\"value\":20160,\"price\":9900,\"expiry\":{\"$date\":1433685599000},\"type\":\"groupon\"}}"
 }

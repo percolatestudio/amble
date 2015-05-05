@@ -13,8 +13,8 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1');
   api.use(['session', 'deps', 'logging'], 'client');
-  api.addFiles('amble-watch.js', 'client');
-  api.export(['AmbleWatch'], 'client');
+  api.addFiles(['watch-handler.js', 'amble-watch.js'], 'client');
+  api.export(['WatchRequest', 'WatchHandler', 'AmbleWatch'], 'client');
 });
 
 Package.onTest(function(api) {

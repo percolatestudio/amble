@@ -12,8 +12,8 @@ import Foundation
 
 class AmbleNotificationController: WKUserNotificationInterfaceController {
 
-    @IBOutlet weak var headerLabel: WKInterfaceLabel!
-    @IBOutlet weak var footerLabel: WKInterfaceLabel!
+    @IBOutlet weak var descriptionLabel: WKInterfaceLabel!
+    @IBOutlet weak var container: WKInterfaceGroup!
     
     override init() {
         // Initialize variables here.
@@ -44,18 +44,12 @@ class AmbleNotificationController: WKUserNotificationInterfaceController {
     */
     
     override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
-        
-        var ambleData = AmbleNotificationData(fromNotification: remoteNotification);
-        if let poiName = ambleData.poiName {
-            let headerText = poiName + " is only steps away..."
-            var styledHeaderText = NSMutableAttributedString(string: headerText);
-            styledHeaderText.addAttribute(NSFontAttributeName, value: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline), range: NSRange(location:0, length: poiName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)));
-            self.headerLabel.setAttributedText(styledHeaderText);
+
+        var deal = Deal(fromNotification: remoteNotification);
+        self.descriptionLabel.setText(deal.dealDescription)
+        if let imageUrl = deal.imageUrl {
+            ImageUtils.loadImage(imageUrl, forGroupBackground: self.container)
         }
-        if let poiAddress = ambleData.poiAddress {
-            self.footerLabel.setText(poiAddress)
-        }
-        
         completionHandler(.Custom)
     }
 }

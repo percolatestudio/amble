@@ -73,6 +73,7 @@ Yelp = {
       });
     }
     catch (e) {
+      console.log("yelp API exception");
       console.log(e.message);
     }
   }

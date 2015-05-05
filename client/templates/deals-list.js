@@ -41,6 +41,11 @@ Template.dealsList.helpers({
 Template.dealsList.events({
   'click .js-push-me': function(e) {
     e.preventDefault();
-    Meteor.call('deals/sendNearestToMe');
+    if (this.activeTab === "saved") {
+      AmbleWatch.updateDeals(Deals.findSaved(Meteor.userId()).fetch().slice(0, 10));
+    }
+    else {
+      Meteor.call('deals/sendNearestToMe');
+    }
   }
 });
