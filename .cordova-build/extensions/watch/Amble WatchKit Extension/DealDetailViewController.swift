@@ -72,6 +72,12 @@ class DealDetailViewController: WKInterfaceController {
         let pct = 100 * (1.0 - (forPrice / value))
         return String(format:"%.0f%% OFF", pct)
     }
+    
+    func updateSaveRow() {
+        var saveRow = self.table.rowControllerAtIndex(RowIds.Save.rawValue) as! DealDetailSaveRow
+        let saveText = AmbleContext.sharedInstance.hasSavedDeal(self.deal) ? "UNSAVE DEAL" : "SAVE DEAL"
+        saveRow.saveDealLabel.setText(saveText)
+    }
 
     func updateTable() {
         self.table.setRowTypes(["DealDetailHeaderRow", "DealDetailMapRow", "DealDetailActionRow", "DealDetailSaveRow"])
@@ -109,8 +115,7 @@ class DealDetailViewController: WKInterfaceController {
         
         actionRow.discountLabel.setText(self.discountText(self.deal.price, andValue: self.deal.value))
         
-        var saveRow = self.table.rowControllerAtIndex(RowIds.Save.rawValue) as! DealDetailSaveRow
-        saveRow.saveDealLabel.setText("SAVE DEAL")
+        self.updateSaveRow()
     }
     
     func refreshMap() {
@@ -150,15 +155,26 @@ class DealDetailViewController: WKInterfaceController {
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
         if let rowId = RowIds(rawValue: rowIndex) {
+            let context = AmbleContext.sharedInstance
             switch rowId {
             case .Action:
-                AmbleContext.sharedInstance.appClient.call(method: "openDeal", withParams: ["_id": self.deal._id], withCompletion: { (response, error) -> Void in
+                context.appClient.call(method: "openDeal", withParams: ["_id": self.deal._id], withCompletion: { (response, error) -> Void in
                     println("opened deal " + self.deal._id)
                 })
             case .Save:
-                AmbleContext.sharedInstance.appClient.call(method: "saveDeal", withParams: ["_id": self.deal._id], withCompletion: { (response, error) -> Void in
-                    println("saved deal " + self.deal._id)
-                })
+                if (context.hasSavedDeal(self.deal)) {
+                    context.savedDealRemoved(self.deal)
+                    context.appClient.call(method: "unsaveDeal", withParams: ["_id": self.deal._id], withCompletion: { (response, error) -> Void in
+                        println("unsaved deal " + self.deal._id)
+                    })
+                }
+                else {
+                    context.savedDealAdded(self.deal)
+                    context.appClient.call(method: "saveDeal", withParams: ["_id": self.deal._id], withCompletion: { (response, error) -> Void in
+                        println("saved deal " + self.deal._id)
+                    })
+                }
+                self.updateSaveRow()
             default:
                 println("bad row id")
             }

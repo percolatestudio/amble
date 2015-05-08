@@ -1,44 +1,61 @@
 var CHECK_COUNTRY_EVERY_MINS = 60;
+var UPDATE_LOCATION_EVERY_SECS = 2;
 
-var getCountry = function(latLng) {
-  Geocode.getCountry(latLng, function(err, country) {
-    if (err) {
-      console.log("Failed to find country", err);
-    } else {
-      Meteor.users.updateCountry(Meteor.userId(), country);
-    }
-  });
+var locationLastUpdated = new ReactiveVar(new Date(0));
+var countryLastChecked = new ReactiveVar(new Date(0));
+
+AmbleSubs = new ReactiveDict();
+
+var shouldUpdateLocation = function(latLng) {
+  if (!(Meteor.user() && Meteor.user().profile)) {
+    //console.log("because of user");
+    return false;
+  }
+
+  var lastLocation = _.pick(Meteor.user().profile.lastLocation, 'lat', 'lng');
+  if (!latLng || _.isEqual(latLng, lastLocation)) {
+    //console.log("because of position");
+    return false;
+  }
+
+  var now = new Date();
+  if (new Date(locationLastUpdated.get() + UPDATE_LOCATION_EVERY_SECS * 1000) < now) {
+    //console.log("because of debounce");
+    return false;
+  }
+  return true;
 };
 
-var getCountryDebounced = _.debounce(getCountry, 1000 * 60 * CHECK_COUNTRY_EVERY_MINS, true);
+var shouldCheckCountry = function() {
+  var now = new Date();
+  return new Date(countryLastChecked.get() + CHECK_COUNTRY_EVERY_MINS * 60 * 1000) < now;
+};
 
-var watchForDeals = function() {
-  Tracker.autorun(function() {
-    if (Meteor.user()) {
-      var latLng = Meteor.user().profile.lastLocation;
-      if (latLng) {
-        Meteor.subscribe('deals/list', latLng);
+var getCountry = function(latLng) {
+  if (shouldCheckCountry()) {
+    Geocode.getCountry(latLng, function(err, country) {
+      if (err) {
+        console.log("Failed to find country", err);
+      } else {
+        Meteor.users.updateCountry(Meteor.userId(), country);
       }
-      Meteor.subscribe('deals/saved');
-    }
-  });
-}
+    });
+    countryLastChecked.set(new Date());
+  }
+};
 
 var watchForLocationChangesInFG = function() {
   Tracker.autorun(function() {
     var latLng = Geolocation.latLng();
     var error = Geolocation.error();
-    if (latLng) {
-      _.throttle(function() {
+    if (shouldUpdateLocation(latLng)) {
         if (Meteor.isCordova) {
           AmbleWatch.updateLocation(latLng);
         }
-        if (Meteor.user()) {
-          console.log("updating location from foreground: ", latLng);
-          Meteor.users.updateLocation(Meteor.userId(), latLng);
-          getCountryDebounced(latLng);
-        }
-      }, 1000);
+        console.log("updating location from foreground: ", latLng);
+        Meteor.users.updateLocation(Meteor.userId(), latLng);
+        getCountry(latLng);
+        locationLastUpdated.set(new Date());
     }
     if (error) {
       console.log(error);
@@ -59,6 +76,10 @@ var watchForLocationChangesInBG = function() {
       }
     };
 
+    if (!shouldUpdateLocation(data.location)) {
+      return;
+    }
+    
     console.log("updating location from background: ", data.location);
     HTTP.post(Router.url('geolocation'), {data: data}, function(error) {
       // 2. tell watch
@@ -85,6 +106,33 @@ var watchForLocationChangesInBG = function() {
     bgGeo.stop();
   }, false);
 
+};
+
+var watchForDeals = function() {
+  Tracker.autorun(function() {
+    if (Meteor.user()) {
+      var handle = Meteor.subscribe('deals/saved', function() {
+        AmbleSubs.set('deals/saved', true);
+      });
+      if (!handle.ready()) {
+        AmbleSubs.set('deals/saved', false);
+      }
+    }
+  });
+
+  Tracker.autorun(function() {
+    if (Meteor.user() && Meteor.user().profile && Meteor.user().profile.lastLocation) {
+      var latLng = Meteor.user().profile.lastLocation;
+      if (latLng) {
+        var handle = Meteor.subscribe('deals/list', latLng, function() {
+          AmbleSubs.set('deals/list', true);
+        });
+        if (!handle.ready()) {
+          AmbleSubs.set('deals/list', false);
+        }
+      }
+    }
+  });
 };
 
 var displayNotification = function(notification) {

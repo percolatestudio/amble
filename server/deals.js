@@ -2,6 +2,10 @@ Deals.PER_USER_REFRESH_DELAY = 7 * 60 * 1000; // 7 minute throttle on refreshing
 
 Deals.loadDealsForUser = function(user, force) {
   var timeSinceUpdated = new Date() - user.dealsUpdatedAt;
+  if (!user.profile.lastLocation.country) {
+    Log.warn("no country for old man: " + user._id);
+    return;
+  }
   if (timeSinceUpdated < Deals.PER_USER_REFRESH_DELAY && !force) {
     return;
   }

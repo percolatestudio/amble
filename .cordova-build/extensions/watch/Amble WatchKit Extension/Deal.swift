@@ -26,6 +26,7 @@ class Deal: NSObject {
     var postalCode :String!
     var state :String!
     var country :String!
+    var dictionary :[String: AnyObject]!
 
     init(fromNotification remoteNotification: [NSObject:AnyObject]) {
         super.init()
@@ -86,5 +87,6 @@ class Deal: NSObject {
                 self.coordinates = CLLocationCoordinate2D(latitude: coordinates[1], longitude: coordinates[0])
             }
         }
+        self.dictionary = dealDict
     }
 }

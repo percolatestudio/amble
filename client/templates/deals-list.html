@@ -11,7 +11,9 @@
           </a>
         {{/each}}
         <div>
-          <a href="#" class="btn-push js-push-me">Push Me</a>
+          {{#if dealsTab}}
+            <a href="#" class="btn-push js-push-me">Push Me</a>
+          {{/if}}
         </div>
         <div style="height: 44px"></div>
       {{else}}

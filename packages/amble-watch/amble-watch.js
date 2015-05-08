@@ -53,13 +53,26 @@ AmbleWatch = {
     });
   },
 
-  updateDeals: function(deals) {
+  updateNearbyDeals: function(deals) {
     if (!AmbleWatch.ready) {
       return;
     }
-    applewatch.sendMessage(EJSON.stringify({ deals: deals }), 'deals', 
+    applewatch.sendMessage(EJSON.stringify({ deals: deals }), 'nearbyDeals', 
       function() { 
-        console.log("updated watch deals");
+        console.log("updated watch nearby deals");
+      }, function(e) {
+        console.log("error updating watch deals");
+        console.log(e);
+    });
+  },
+
+  updateSavedDeals: function(deals) {
+    if (!AmbleWatch.ready) {
+      return;
+    }
+    applewatch.sendMessage(EJSON.stringify({ deals: deals }), 'savedDeals', 
+      function() { 
+        console.log("updated watch saved deals");
       }, function(e) {
         console.log("error updating watch deals");
         console.log(e);

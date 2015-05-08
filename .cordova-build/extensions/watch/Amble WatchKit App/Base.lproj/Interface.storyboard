@@ -8,7 +8,19 @@
         <!--App Root-->
         <scene sceneID="JRX-ji-Aw5">
             <objects>
-                <controller identifier="AmbleAppViewController" id="p0A-vP-LKq" userLabel="App Root" customClass="AmbleAppViewController" customModule="Amble_WatchKit_Extension"/>
+                <controller identifier="AmbleAppViewController" backgroundImage="deals-loading" id="p0A-vP-LKq" userLabel="App Root" customClass="AmbleAppViewController" customModule="Amble_WatchKit_Extension">
+                    <items>
+                        <group alignment="center" verticalAlignment="center" radius="0.0" id="cKg-yD-PZ7">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="No Deals Yet!" id="H3S-x7-xsq">
+                                    <fontDescription key="font" type="boldSystem" pointSize="20"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                            <edgeInsets key="margins" left="2" right="2" top="2" bottom="2"/>
+                        </group>
+                    </items>
+                </controller>
             </objects>
             <point key="canvasLocation" x="7" y="552"/>
         </scene>

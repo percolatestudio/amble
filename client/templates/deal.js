@@ -18,12 +18,12 @@ Template.deal.helpers({
       lat: this.location.coordinates[1]
     };
     var distance = Geocode.getDistanceAsCrow(Meteor.user().profile.lastLocation, latLng);
-    var units = this.country === 'US' ? 'mi' : 'km';
+    var units = this.location.country === 'US' ? 'mi' : 'km';
     var distance = units === 'mi' ? distance / 1.6 : distance;
     return distance.toFixed(1);
   },
   units: function() {
-    return this.country === "US" ? "mi" : "km";
+    return this.location.country === "US" ? "mi" : "km";
   },
   timeRemaining: function() {
     var totalHours = Math.round((this.expiry - new Date()) / (60*60*1000));
