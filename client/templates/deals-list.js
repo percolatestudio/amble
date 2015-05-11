@@ -45,7 +45,7 @@ Template.dealsList.helpers({
 Template.dealsList.events({
   'click .js-push-me': function(e) {
     e.preventDefault();
-    if (this.activeTab !== "saved") {
+    if (this.activeTab === "saved") {
       AmbleWatch.updateDeals(Deals.findSaved(Meteor.userId()).fetch().slice(0, 10));
     }
     else {

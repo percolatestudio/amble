@@ -137,8 +137,8 @@ var watchForDeals = function() {
 
 var displayNotification = function(notification) {
   console.log(JSON.stringify(notification));
-  var title = notification.payload.poi.name + " is only steps away!";
-  var message =  notification.payload.poi.address;
+  var title = "DEAL NEAR  YOU";
+  var message =  notification.payload.deal.description;
   navigator.notification.alert(message, null, title, "OK");
 };
 
